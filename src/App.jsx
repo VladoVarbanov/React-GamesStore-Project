@@ -1,3 +1,4 @@
+import CallToAction from "./components/CallToAction.jsx";
 import Categories from "./components/Categories.jsx";
 import Futures from "./components/Futures.jsx";
 import Header from "./components/Header.jsx";
@@ -35,6 +36,8 @@ function App() {
       <TopGames />
 
       <Categories />
+
+      <CallToAction />
 
       <footer>
         <div className="container">
