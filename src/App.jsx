@@ -1,5 +1,6 @@
 import CallToAction from "./components/CallToAction.jsx";
 import Categories from "./components/Categories.jsx";
+import Footer from "./components/Footer.jsx";
 import Futures from "./components/Futures.jsx";
 import Header from "./components/Header.jsx";
 import MainBanner from "./components/MainBanner.jsx";
@@ -39,19 +40,7 @@ function App() {
 
       <CallToAction />
 
-      <footer>
-        <div className="container">
-          <div className="col-lg-12">
-            <p>
-              Copyright © 2048 LUGX Gaming Company. All rights reserved.
-              &nbsp;&nbsp;{" "}
-              <a rel="nofollow" href="https://templatemo.com" target="_blank">
-                Design: TemplateMo
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
