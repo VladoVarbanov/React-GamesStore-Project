@@ -5,12 +5,18 @@ export default function MainBanner(props) {
         <div className="row">
           <div className="col-lg-6 align-self-center">
             <div className="caption header-text">
-              <h6>Welcome to lugx</h6>
-              <h2>BEST GAMING SITE EVER!</h2>
+              <h6>Welcome to Indie GameSpot</h6>
+              <h2>WHERE COMMUNITY SHAPES THE FUTURE OF INDIE GAMING</h2>
               <p>
-                LUGX Gaming is free Bootstrap 5 HTML CSS website template for
-                your gaming websites. You can download and use this layout for
-                commercial purposes. Please tell your friends about TemplateMo.
+                Welcome to Indie GameSpot, the hub for indie gaming innovation!
+                Discover a world of creativity and passion as small indie
+                companies showcase their unique games. Here, you'll have the
+                power to not only purchase their masterpieces but also share
+                your voice. Vote for your favorites, write comments, and share
+                your experiences. Connect with the talented developers behind
+                the games by exploring their stories on our 'Meet the Indies'
+                page. Join us in celebrating the spirit of indie gaming and be a
+                part of this vibrant community.
               </p>
               <div className="search-input">
                 <form id="search" action="#">

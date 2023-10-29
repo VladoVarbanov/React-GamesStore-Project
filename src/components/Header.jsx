@@ -24,6 +24,9 @@ export default function Header(props) {
                   <a href="product-details.html">Product Details</a>
                 </li>
                 <li>
+                  <a href="product-details.html">Meet the Indies</a>
+                </li>
+                <li>
                   <a href="contact.html">Contact Us</a>
                 </li>
                 <li>
