@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header(props) {
   return (
     <header className="header-area header-sticky">
@@ -6,22 +8,22 @@ export default function Header(props) {
           <div className="col-12">
             <nav className="main-nav">
               {/* <!-- ***** Logo Start ***** --> */}
-              <a href="index.html" className="logo">
+              <Link to="/" className="logo">
                 <img src="/images/logo.png" alt="" style={{ width: "158px" }} />
-              </a>
+              </Link>
               {/* <!-- ***** Logo End ***** --> */}
               {/* <!-- ***** Menu Start ***** --> */}
               <ul className="nav">
                 <li>
-                  <a href="index.html" className="active">
+                  <Link to="/" className="active">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="shop.html">Our Shop</a>
+                  <Link to="/catalog">Our Shop</Link>
                 </li>
                 <li>
-                  <a href="product-details.html">Product Details</a>
+                  <Link to="/product-details">Product Details</Link>
                 </li>
                 <li>
                   <a href="product-details.html">Meet the Indies</a>
