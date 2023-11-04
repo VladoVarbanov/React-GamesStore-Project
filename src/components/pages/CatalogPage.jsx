@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "../ShopStocks.jsx";
@@ -13,7 +14,7 @@ export default function CatalogPage(props) {
             <div className="col-lg-12">
               <h3>Our Shop</h3>
               <span className="breadcrumb">
-                <a href="/">Home</a> {">"} Our Shop
+                <Link to="/">Home</Link> {">"} Our Shop
               </span>
             </div>
           </div>

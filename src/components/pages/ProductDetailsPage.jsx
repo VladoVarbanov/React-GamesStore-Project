@@ -3,6 +3,7 @@ import NavBar from "../NavBar.jsx";
 import MoreProductInfo from "../MoreProductInfo.jsx";
 import RelatedGames from "../RelatedGames.jsx";
 import SingleProductSection from "../SingleProductSection.jsx";
+import { Link } from "react-router-dom";
 
 export default function ProductDetails(props) {
   return (
@@ -15,8 +16,8 @@ export default function ProductDetails(props) {
             <div className="col-lg-12">
               <h3>Modern Warfare® II</h3>
               <span className="breadcrumb">
-                <a href="#">Home</a> {">"} <a href="#">Shop</a> {">"} Assasin
-                Creed
+                <Link to="/">Home</Link> {">"} <Link to="/catalog">Shop</Link>{" "}
+                {">"} Assasin Creed
               </span>
             </div>
           </div>
