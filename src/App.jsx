@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
 import MainPage from "./components/pages/MainPage.jsx";
+import CatalogPage from "./components/pages/CatalogPage.jsx";
+import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       {/* <!-- ***** Preloader End ***** --> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/product-details" element={<ProductDetails />} />
       </Routes>
     </>
   );
