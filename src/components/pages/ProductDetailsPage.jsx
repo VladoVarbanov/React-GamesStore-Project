@@ -6,9 +6,11 @@ import SingleProductSection from "../SingleProductSection.jsx";
 import { Link } from "react-router-dom";
 
 export default function ProductDetails(props) {
+  let activePage = "details";
+
   return (
     <>
-      <NavBar />
+      <NavBar activePage={activePage} />
 
       <div className="page-heading header-text">
         <div className="container">

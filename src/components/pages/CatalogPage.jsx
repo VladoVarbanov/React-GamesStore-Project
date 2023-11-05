@@ -4,9 +4,11 @@ import NavBar from "../NavBar.jsx";
 import ShopStocks from "../ShopStocks.jsx";
 
 export default function CatalogPage(props) {
+  let activePage = "shop";
+
   return (
     <>
-      <NavBar />
+      <NavBar activePage={activePage} />
 
       <div className="page-heading header-text">
         <div className="container">

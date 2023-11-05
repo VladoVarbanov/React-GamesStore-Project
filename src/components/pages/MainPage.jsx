@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 
 export default function MainPage(props) {
   const [games, setGames] = useState([]);
+  let activePage = "home";
 
   // init services
   const db = getFirestore();
@@ -43,7 +44,7 @@ export default function MainPage(props) {
   return (
     <>
       {/* <!-- ***** Header Area Start ***** --> */}
-      <NavBar />
+      <NavBar activePage={activePage} />
       {/* <!-- ***** Header Area End ***** --> */}
       <CompaniesContext.Provider value={games}>
         <MainBanner />

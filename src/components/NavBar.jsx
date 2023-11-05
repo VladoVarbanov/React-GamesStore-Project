@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Header(props) {
-  const [activeTab, setActiveTab] = useState("home");
+export default function Header({ activePage }) {
+  let page = "";
+  if (activePage === "home") {
+    page = "home";
+  } else if (activePage === "shop") {
+    page = "shop";
+  } else if (activePage === "details") {
+    page = "details";
+  }
+  const [activeTab, setActiveTab] = useState(page);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -32,8 +40,8 @@ export default function Header(props) {
                 <li>
                   <Link
                     to="/catalog"
-                    className={activeTab === "ourShop" ? "active" : ""}
-                    onClick={() => handleTabClick("ourShop")}
+                    className={activeTab === "shop" ? "active" : ""}
+                    onClick={() => handleTabClick("shop")}
                   >
                     Our Shop
                   </Link>
@@ -41,8 +49,8 @@ export default function Header(props) {
                 <li>
                   <Link
                     to="/product-details"
-                    className={activeTab === "productDetails" ? "active" : ""}
-                    onClick={() => handleTabClick("productDetails")}
+                    className={activeTab === "details" ? "active" : ""}
+                    onClick={() => handleTabClick("details")}
                   >
                     Product Details
                   </Link>
