@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Header(props) {
+  const [activeTab, setActiveTab] = useState("home");
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
   return (
     <header className="header-area header-sticky">
       <div className="container">
@@ -15,15 +21,31 @@ export default function Header(props) {
               {/* <!-- ***** Menu Start ***** --> */}
               <ul className="nav">
                 <li>
-                  <Link to="/" className="active">
+                  <Link
+                    to="/"
+                    className={activeTab === "home" ? "active" : ""}
+                    onClick={() => handleTabClick("home")}
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/catalog">Our Shop</Link>
+                  <Link
+                    to="/catalog"
+                    className={activeTab === "ourShop" ? "active" : ""}
+                    onClick={() => handleTabClick("ourShop")}
+                  >
+                    Our Shop
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/product-details">Product Details</Link>
+                  <Link
+                    to="/product-details"
+                    className={activeTab === "productDetails" ? "active" : ""}
+                    onClick={() => handleTabClick("productDetails")}
+                  >
+                    Product Details
+                  </Link>
                 </li>
                 <li>
                   <a href="product-details.html">Meet the Indies</a>

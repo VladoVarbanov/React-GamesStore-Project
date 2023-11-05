@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { CompaniesContext } from "../contexts/CompaniesContext.jsx";
+
 export default function Trending(props) {
+  const games = useContext(CompaniesContext);
   return (
     <div className="section trending">
       <div className="container">
@@ -14,78 +18,28 @@ export default function Trending(props) {
               <a href="shop.html">View All</a>
             </div>
           </div>
-          <div className="col-lg-3 col-md-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/trending-01.jpg" alt="" />
-                </a>
-                <span className="price">
-                  <em>$28</em>$20
-                </span>
-              </div>
-              <div className="down-content">
-                <span className="category">Action</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">
-                  <i className="fa fa-shopping-bag"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/trending-02.jpg" alt="" />
-                </a>
-                <span className="price">$44</span>
-              </div>
-              <div className="down-content">
-                <span className="category">Action</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">
-                  <i className="fa fa-shopping-bag"></i>
-                </a>
+
+          {games.map((game) => (
+            <div className="col-lg-3 col-md-6" key={game.id}>
+              <div className="item">
+                <div className="thumb">
+                  <a href="product-details.html">
+                    <img src={game.imgUrl} alt="" />
+                  </a>
+                  <span className="price">
+                    <em>${(game.price * 1.2).toFixed(2)}</em>${game.price}
+                  </span>
+                </div>
+                <div className="down-content">
+                  <span className="category">{game.genre}</span>
+                  <h4>{game.game}</h4>
+                  <a href="product-details.html">
+                    <i className="fa fa-shopping-bag"></i>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/trending-03.jpg" alt="" />
-                </a>
-                <span className="price">
-                  <em>$64</em>$44
-                </span>
-              </div>
-              <div className="down-content">
-                <span className="category">Action</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">
-                  <i className="fa fa-shopping-bag"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/trending-04.jpg" alt="" />
-                </a>
-                <span className="price">$32</span>
-              </div>
-              <div className="down-content">
-                <span className="category">Action</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">
-                  <i className="fa fa-shopping-bag"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

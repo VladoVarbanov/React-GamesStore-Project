@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CompaniesContext } from "../contexts/CompaniesContext.jsx";
+
 export default function Categories(props) {
+  const games = useContext(CompaniesContext);
+
   return (
     <div className="section categories">
       <div className="container">
@@ -9,56 +14,19 @@ export default function Categories(props) {
               <h2>Top Categories</h2>
             </div>
           </div>
-          <div className="col-lg col-sm-6 col-xs-12">
-            <div className="item">
-              <h4>Action</h4>
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/categories-01.jpg" alt="" />
-                </a>
+
+          {games.map((game) => (
+            <div className="col-lg col-sm-6 col-xs-12" key={game.id}>
+              <div className="item">
+                <h4>{game.genre}</h4>
+                <div className="thumb">
+                  <a href="product-details.html">
+                    <img src={game.imgUrl} alt="" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg col-sm-6 col-xs-12">
-            <div className="item">
-              <h4>Action</h4>
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/categories-05.jpg" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg col-sm-6 col-xs-12">
-            <div className="item">
-              <h4>Action</h4>
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/categories-03.jpg" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg col-sm-6 col-xs-12">
-            <div className="item">
-              <h4>Action</h4>
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/categories-04.jpg" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg col-sm-6 col-xs-12">
-            <div className="item">
-              <h4>Action</h4>
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/categories-05.jpg" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

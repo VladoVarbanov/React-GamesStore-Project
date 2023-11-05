@@ -25,7 +25,6 @@ export default function MainBanner(props) {
                     placeholder="Type Something"
                     id="searchText"
                     name="searchKeyword"
-                    onkeypress="handle"
                   />
                   <button role="button">Search Now</button>
                 </form>

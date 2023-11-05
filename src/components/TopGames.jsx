@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CompaniesContext } from "../contexts/CompaniesContext.jsx";
+
 export default function TopGames(props) {
+  const games = useContext(CompaniesContext);
+
   return (
     <div className="section most-played">
       <div className="container">
@@ -14,90 +19,23 @@ export default function TopGames(props) {
               <a href="shop.html">View All</a>
             </div>
           </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-01.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-02.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
+
+          {games.map((game) => (
+            <div className="col-lg-2 col-md-6 col-sm-6" key={game.id}>
+              <div className="item">
+                <div className="thumb">
+                  <a href="product-details.html">
+                    <img src={game.imgUrl} alt="" />
+                  </a>
+                </div>
+                <div className="down-content">
+                  <span className="category">{game.genre}</span>
+                  <h4>{game.game}</h4>
+                  <a href="product-details.html">Explore</a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-03.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-04.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-05.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-6 col-sm-6">
-            <div className="item">
-              <div className="thumb">
-                <a href="product-details.html">
-                  <img src="/images/top-game-06.jpg" alt="" />
-                </a>
-              </div>
-              <div className="down-content">
-                <span className="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
