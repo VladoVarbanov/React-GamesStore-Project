@@ -39,11 +39,11 @@ export default function Header({ activePage }) {
                 </li>
                 <li>
                   <Link
-                    to="/catalog"
+                    to="/shop"
                     className={activeTab === "shop" ? "active" : ""}
                     onClick={() => handleTabClick("shop")}
                   >
-                    Our Shop
+                    Shop
                   </Link>
                 </li>
                 <li>
