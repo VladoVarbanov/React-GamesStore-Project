@@ -22,7 +22,7 @@ function App() {
       {/* <!-- ***** Preloader End ***** --> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/shop" element={<CatalogPage />} />
         <Route path="/product-details" element={<ProductDetails />} />
       </Routes>
     </>
