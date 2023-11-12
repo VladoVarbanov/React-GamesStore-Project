@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { CompaniesContext } from "../contexts/CompaniesContext.jsx";
+import { GamesContext } from "../contexts/GamesContext.jsx";
 
 export default function Trending(props) {
-  const games = useContext(CompaniesContext);
+  const games = useContext(GamesContext);
   return (
     <div className="section trending">
       <div className="container">

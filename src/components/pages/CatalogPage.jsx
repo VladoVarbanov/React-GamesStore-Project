@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "../ShopStocks.jsx";
+import { GamesContext } from "../../contexts/GamesContext.jsx";
+import { allGames } from "../../services/firebaseCompaniesDB.jsx";
 
 export default function CatalogPage(props) {
   let activePage = "shop";
@@ -14,16 +16,17 @@ export default function CatalogPage(props) {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Our Shop</h3>
+              <h3>Shop</h3>
               <span className="breadcrumb">
-                <Link to="/">Home</Link> {">"} Our Shop
+                <Link to="/">Home</Link> {">"} Shop
               </span>
             </div>
           </div>
         </div>
       </div>
-
-      <ShopStocks />
+      <GamesContext.Provider value={allGames()}>
+        <ShopStocks />
+      </GamesContext.Provider>
 
       <Footer />
     </>
