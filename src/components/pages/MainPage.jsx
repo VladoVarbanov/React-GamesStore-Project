@@ -9,44 +9,18 @@ import NavBar from "../NavBar.jsx";
 import MainBanner from "../MainBanner.jsx";
 import TopGames from "../TopGames.jsx";
 import Trending from "../Trending.jsx";
-import { CompaniesContext } from "../../contexts/CompaniesContext.jsx";
-import { allCompanies } from "../../services/firebaseCompaniesDB.jsx";
-import { useState, useEffect } from "react";
+import { GamesContext } from "../../contexts/GamesContext.jsx";
+import { allGames } from "../../services/firebaseCompaniesDB.jsx";
 
 export default function MainPage(props) {
-  const [games, setGames] = useState([]);
   let activePage = "home";
 
-  // init services
-  const db = getFirestore();
-
-  // collection ref
-  const colRef = collection(db, "companies");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const db = getFirestore();
-      const colRef = collection(db, "companies");
-      const snapshot = await getDocs(colRef);
-      const gamesRef = snapshot.docs.map((game) => ({
-        ...game.data(),
-        id: game.id,
-      }));
-      setGames(gamesRef);
-    };
-
-    fetchData();
-  }, []);
-
-  const contextValue = {
-    allCompanies,
-  };
   return (
     <>
       {/* <!-- ***** Header Area Start ***** --> */}
       <NavBar activePage={activePage} />
       {/* <!-- ***** Header Area End ***** --> */}
-      <CompaniesContext.Provider value={games}>
+      <GamesContext.Provider value={allGames()}>
         <MainBanner />
 
         <Futures />
@@ -58,7 +32,7 @@ export default function MainPage(props) {
         <Categories />
 
         <CallToAction />
-      </CompaniesContext.Provider>
+      </GamesContext.Provider>
 
       <Footer />
     </>
