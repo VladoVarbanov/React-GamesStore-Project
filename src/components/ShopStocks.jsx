@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { GamesContext } from "../contexts/GamesContext.jsx";
+
 export default function ShopStocks(props) {
+  const games = useContext(GamesContext);
   return (
     <div className="section trending">
       <div className="container">
@@ -25,7 +29,31 @@ export default function ShopStocks(props) {
           </li>
         </ul>
         <div className="row trending-box">
-          <div className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv">
+          {games.map((game) => (
+            <div
+              className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv"
+              key={game.id}
+            >
+              <div className="item">
+                <div className="thumb">
+                  <a href="product-details.html">
+                    <img src={game.imgUrl} alt="" />
+                  </a>
+                  <span className="price">
+                    <em>${(game.price * 1.2).toFixed(2)}</em>${game.price}
+                  </span>
+                </div>
+                <div className="down-content">
+                  <span className="category">{game.genre}</span>
+                  <h4>{game.game}</h4>
+                  <a href="product-details.html">
+                    <i className="fa fa-shopping-bag"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+          {/* <div className="col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6 adv">
             <div className="item">
               <div className="thumb">
                 <a href="product-details.html">
@@ -252,7 +280,7 @@ export default function ShopStocks(props) {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row">
           <div className="col-lg-12">
@@ -261,12 +289,12 @@ export default function ShopStocks(props) {
                 <a href="#"> &lt; </a>
               </li>
               <li>
-                <a href="#">1</a>
+                <a className="is_active" href="#">
+                  1
+                </a>
               </li>
               <li>
-                <a className="is_active" href="#">
-                  2
-                </a>
+                <a href="#">2</a>
               </li>
               <li>
                 <a href="#">3</a>
