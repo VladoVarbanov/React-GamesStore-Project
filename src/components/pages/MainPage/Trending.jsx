@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GamesContext } from "../../contexts/GamesContext.jsx";
+import { GamesContext } from "../../../contexts/GamesContext.jsx";
 
 export default function Trending(props) {
   const games = useContext(GamesContext);
