@@ -2,16 +2,13 @@ import { initializeFirebase } from "./firebaseConfigDB.js";
 import { useState, useEffect } from "react";
 import {
   getAuth,
+  signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // init services
 const db = getFirestore();
@@ -41,7 +38,29 @@ export const allGames = () => {
 export const singUp = ({ username, email, password }) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log("user created: ", cred.user);
+      return cred.user.email;
     })
     .catch((err) => console.log(err.message));
 };
+
+export const singIn = ({ email, password }) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      return cred.user.email;
+    })
+    .catch((err) => console.log(err.message));
+};
+
+export const logOut = () => {
+  signOut(auth)
+    .then()
+    .catch((err) => console.log(err.message));
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user !== null) {
+    console.log("User status changed: ", user.email);
+  } else {
+    console.log("User status changed: ", user);
+  }
+});
