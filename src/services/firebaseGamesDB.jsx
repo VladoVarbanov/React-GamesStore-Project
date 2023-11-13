@@ -54,25 +54,23 @@ export const singIn = ({ email, password }) => {
 };
 
 export const logOut = () => {
-  signOut(auth)
-    .then()
-    .catch((err) => console.log(err.message));
+  signOut(auth);
 };
 
-export const currentUser = () => {
-  const [user, setUser] = useState("");
-  useEffect(() => {
-    onAuthStateChanged(auth, (userDB) => {
-      if (userDB !== null) {
-        setUser(userDB.email);
-        console.log("User status changed: ", userDB.email);
-      } else {
-        setUser("");
+// export const currentUser = () => {
+//   const [user, setUser] = useState("");
+//   useEffect(() => {
+//     onAuthStateChanged(auth, (userDB) => {
+//       if (userDB !== null) {
+//         setUser(userDB.email);
+//         // console.log("User status changed: ", userDB.email);
+//       } else {
+//         setUser("");
 
-        console.log("User status changed: ", userDB);
-      }
-    });
-  }, [user]);
+//         // console.log("User status changed: ", userDB);
+//       }
+//     });
+//   }, [user]);
 
-  return user;
-};
+//   return user;
+// };

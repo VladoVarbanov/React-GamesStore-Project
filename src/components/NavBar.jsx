@@ -1,8 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logOut } from "../services/firebaseGamesDB.jsx";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function Header({ activePage }) {
+  const auth = getAuth();
+
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (userDB) => {
+      if (userDB !== null) {
+        setUser(userDB.email);
+        // console.log("User status changed: ", userDB.email);
+      } else {
+        setUser("");
+
+        // console.log("User status changed: ", userDB);
+      }
+    });
+  }, []);
+
+  console.log(user);
   let page = "";
   if (activePage === "home") {
     page = "home";
@@ -20,6 +38,7 @@ export default function Header({ activePage }) {
   const signOut = () => {
     logOut();
   };
+
   return (
     <header className="header-area header-sticky">
       <div className="container">
@@ -66,18 +85,21 @@ export default function Header({ activePage }) {
                 <li>
                   <a href="contact.html">Contact Us</a>
                 </li>
-                <li>
-                  <Link
-                    to="/registration"
-                    className={activeTab === "details" ? "active" : ""}
-                    onClick={() => handleTabClick("details")}
-                  >
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link onClick={signOut}>SIGN OUT</Link>
-                </li>
+                {user === "" ? (
+                  <li>
+                    <Link
+                      to="/login"
+                      className={activeTab === "details" ? "active" : ""}
+                      onClick={() => handleTabClick("details")}
+                    >
+                      Sign In
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link onClick={signOut}>SIGN OUT</Link>
+                  </li>
+                )}
               </ul>
               <a className="menu-trigger">
                 <span>Menu</span>
