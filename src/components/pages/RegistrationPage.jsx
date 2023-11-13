@@ -4,6 +4,7 @@ import NavBar from "../NavBar.jsx";
 import RegistrationForm from "./RegistrationPage/RegistrationForm.jsx";
 import Footer from "../Footer.jsx";
 import { singUp } from "../../services/firebaseGamesDB.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage(props) {
   const [options, setOptions] = useState("option1");
@@ -19,6 +20,12 @@ export default function RegisterPage(props) {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
+
+  const radioButtons = (id) => {
+    setOptions(id);
+  };
 
   const onChangeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -45,6 +52,7 @@ export default function RegisterPage(props) {
     }
 
     singUp(values);
+    navigate("/");
   };
   const SubmitValue = {
     options,
@@ -52,6 +60,7 @@ export default function RegisterPage(props) {
     values,
     onChangeHandler,
     onSubmit,
+    radioButtons,
   };
   let activePage = "register";
 

@@ -4,6 +4,7 @@ import LoginForm from "./LoginPage/LoginForm.jsx";
 import { useState } from "react";
 import { SubmitContext } from "../../contexts/SubmitContext.jsx";
 import { singIn } from "../../services/firebaseGamesDB.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(params) {
   const [err, setErr] = useState({
@@ -14,6 +15,8 @@ export default function LoginPage(params) {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -29,6 +32,7 @@ export default function LoginPage(params) {
     }
 
     singIn(values);
+    navigate("/");
   };
   const SubmitValue = {
     err,
