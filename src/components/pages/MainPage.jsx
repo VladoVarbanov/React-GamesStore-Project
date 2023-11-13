@@ -28,7 +28,7 @@ export default function MainPage(props) {
 
         <Categories />
 
-        <CallToAction />
+        {/* <CallToAction /> */}
       </GamesContext.Provider>
 
       <Footer />

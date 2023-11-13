@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { logOut } from "../services/firebaseGamesDB.jsx";
 
 export default function Header({ activePage }) {
   let page = "";
@@ -14,6 +15,10 @@ export default function Header({ activePage }) {
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+  };
+
+  const signOut = () => {
+    logOut();
   };
   return (
     <header className="header-area header-sticky">
@@ -69,6 +74,9 @@ export default function Header({ activePage }) {
                   >
                     Sign Up
                   </Link>
+                </li>
+                <li>
+                  <Link onClick={signOut}>SIGN OUT</Link>
                 </li>
               </ul>
               <a className="menu-trigger">
