@@ -16,6 +16,8 @@ const auth = getAuth();
 
 // collection ref
 const colRef = collection(db, "companies");
+
+// take all games from DB.
 export const allGames = () => {
   const [games, setGames] = useState([]);
 
@@ -57,10 +59,20 @@ export const logOut = () => {
     .catch((err) => console.log(err.message));
 };
 
-onAuthStateChanged(auth, (user) => {
-  if (user !== null) {
-    console.log("User status changed: ", user.email);
-  } else {
-    console.log("User status changed: ", user);
-  }
-});
+export const currentUser = () => {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (userDB) => {
+      if (userDB !== null) {
+        setUser(userDB.email);
+        console.log("User status changed: ", userDB.email);
+      } else {
+        setUser("");
+
+        console.log("User status changed: ", userDB);
+      }
+    });
+  }, [user]);
+
+  return user;
+};
