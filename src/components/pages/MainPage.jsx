@@ -1,11 +1,11 @@
-import CallToAction from "../CallToAction";
-import Categories from "../Categories.jsx";
+import CallToAction from "../MainPage/CallToAction.jsx";
+import Categories from "../MainPage/Categories.jsx";
 import Footer from "../Footer.jsx";
-import Futures from "../Futures.jsx";
+import Futures from "../MainPage/Futures.jsx";
 import NavBar from "../NavBar.jsx";
-import MainBanner from "../MainBanner.jsx";
-import TopGames from "../TopGames.jsx";
-import Trending from "../Trending.jsx";
+import MainBanner from "../MainPage/MainBanner.jsx";
+import TopGames from "../MainPage/TopGames.jsx";
+import Trending from "../MainPage/Trending.jsx";
 import { GamesContext } from "../../contexts/GamesContext.jsx";
 import { allGames } from "../../services/firebaseGamesDB.jsx";
 

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "./components/pages/MainPage.jsx";
 import CatalogPage from "./components/pages/CatalogPage.jsx";
 import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
-import RegisterPage from "./components/pages/RegisterPage.jsx";
+import RegisterPage from "./components/pages/RegistrationPage.jsx";
 
 function App() {
   return (

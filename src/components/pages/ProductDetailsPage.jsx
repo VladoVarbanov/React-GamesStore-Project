@@ -1,8 +1,8 @@
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
-import MoreProductInfo from "../MoreProductInfo.jsx";
-import RelatedGames from "../RelatedGames.jsx";
-import SingleProductSection from "../SingleProductSection.jsx";
+import MoreProductInfo from "../ProductDetailsPage/MoreProductInfo.jsx";
+import RelatedGames from "../ProductDetailsPage/RelatedGames.jsx";
+import SingleProductSection from "../ProductDetailsPage/SingleProductSection.jsx";
 import { Link } from "react-router-dom";
 
 export default function ProductDetails(props) {

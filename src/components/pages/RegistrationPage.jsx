@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SubmitContext } from "../../contexts/SubmitContext.jsx";
 import NavBar from "../NavBar.jsx";
-import RegistrationForm from "../RegistrationForm.jsx";
+import RegistrationForm from "../RegistrationPage/RegistrationForm.jsx";
 import Footer from "../Footer.jsx";
 import { singUp } from "../../services/firebaseGamesDB.jsx";
 

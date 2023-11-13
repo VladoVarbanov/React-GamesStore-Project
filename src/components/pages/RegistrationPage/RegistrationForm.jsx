@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SubmitContext } from "../contexts/SubmitContext.jsx";
+import { SubmitContext } from "../../contexts/SubmitContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function RegistrationForm(props) {
