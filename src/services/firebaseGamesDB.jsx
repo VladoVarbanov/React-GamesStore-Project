@@ -1,5 +1,10 @@
 import { initializeFirebase } from "./firebaseConfigDB.js";
 import { useState, useEffect } from "react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import {
   getFirestore,
@@ -10,6 +15,7 @@ import {
 
 // init services
 const db = getFirestore();
+const auth = getAuth();
 
 // collection ref
 const colRef = collection(db, "companies");
@@ -30,4 +36,12 @@ export const allGames = () => {
   }, []);
 
   return games;
+};
+
+export const singUp = ({ username, email, password }) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      console.log("user created: ", cred.user);
+    })
+    .catch((err) => console.log(err.message));
 };
