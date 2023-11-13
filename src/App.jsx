@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "./components/pages/MainPage.jsx";
 import CatalogPage from "./components/pages/CatalogPage.jsx";
 import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
+import RegisterPage from "./components/pages/RegisterPage.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/shop" element={<CatalogPage />} />
         <Route path="/product-details" element={<ProductDetails />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </>
   );
