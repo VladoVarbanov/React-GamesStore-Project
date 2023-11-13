@@ -62,7 +62,13 @@ export default function Header({ activePage }) {
                   <a href="contact.html">Contact Us</a>
                 </li>
                 <li>
-                  <a href="#">Sign In</a>
+                  <Link
+                    to="/register"
+                    className={activeTab === "details" ? "active" : ""}
+                    onClick={() => handleTabClick("details")}
+                  >
+                    Sign In
+                  </Link>
                 </li>
               </ul>
               <a className="menu-trigger">
