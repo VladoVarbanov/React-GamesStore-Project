@@ -62,7 +62,7 @@ export default function RegisterPage(props) {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Rgistration</h3>
+              <h3>Registration</h3>
               <span className="breadcrumb">
                 {/* <Link to="/">Home</Link> {">"} Shop */}
               </span>

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { SubmitContext } from "../contexts/SubmitContext.jsx";
+import { Link } from "react-router-dom";
 
 export default function RegistrationForm(props) {
   const { options, err, values, onChangeHandler, onSubmit } =
@@ -131,12 +132,17 @@ export default function RegistrationForm(props) {
               </div>
             </div>
             <div className="d-flex justify-content-center">
-              <button type="submit" className="btn btn-primary col-sm-4">
+              <button type="submit" className="btn btn-primary col-sm-5">
                 SIGN UP
               </button>
             </div>
           </div>
         </form>
+        <p className="d-flex justify-content-center pt-4">OR</p>
+
+        <Link to="/login" className="d-flex justify-content-center pt-4">
+          <button className="btn btn-success col-sm-5">SIGN IN</button>
+        </Link>
       </div>
     </div>
   );

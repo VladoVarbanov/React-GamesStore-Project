@@ -63,7 +63,7 @@ export default function Header({ activePage }) {
                 </li>
                 <li>
                   <Link
-                    to="/register"
+                    to="/registration"
                     className={activeTab === "details" ? "active" : ""}
                     onClick={() => handleTabClick("details")}
                   >
