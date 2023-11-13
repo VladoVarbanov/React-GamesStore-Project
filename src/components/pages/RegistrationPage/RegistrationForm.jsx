@@ -3,7 +3,7 @@ import { SubmitContext } from "../../../contexts/SubmitContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function RegistrationForm(props) {
-  const { options, err, values, onChangeHandler, onSubmit } =
+  const { options, err, values, onChangeHandler, onSubmit, radioButtons } =
     useContext(SubmitContext);
   return (
     <div className="d-flex justify-content-center align-items-center m-5 px-15 ">
@@ -18,7 +18,7 @@ export default function RegistrationForm(props) {
                   name="gridRadios"
                   id="option1"
                   value={options}
-                  onChange={(e) => setOptions(e.target.id)}
+                  onChange={(e) => radioButtons(e.target.id)}
                   defaultChecked
                 />
                 <label htmlFor="option1" className="form-check-label">
@@ -32,7 +32,7 @@ export default function RegistrationForm(props) {
                   name="gridRadios"
                   id="option2"
                   value={options}
-                  onChange={(e) => setOptions(e.target.id)}
+                  onChange={(e) => radioButtons(e.target.id)}
                 />
                 <label htmlFor="option2" className="form-check-label">
                   Person
