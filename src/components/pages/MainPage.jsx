@@ -1,6 +1,3 @@
-import { initializeFirebase } from "../../services/firebaseConfigDB.js";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-
 import CallToAction from "../CallToAction";
 import Categories from "../Categories.jsx";
 import Footer from "../Footer.jsx";
@@ -10,7 +7,7 @@ import MainBanner from "../MainBanner.jsx";
 import TopGames from "../TopGames.jsx";
 import Trending from "../Trending.jsx";
 import { GamesContext } from "../../contexts/GamesContext.jsx";
-import { allGames } from "../../services/firebaseCompaniesDB.jsx";
+import { allGames } from "../../services/firebaseGamesDB.jsx";
 
 export default function MainPage(props) {
   let activePage = "home";

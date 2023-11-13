@@ -3,7 +3,7 @@ import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "../ShopStocks.jsx";
 import { GamesContext } from "../../contexts/GamesContext.jsx";
-import { allGames } from "../../services/firebaseCompaniesDB.jsx";
+import { allGames } from "../../services/firebaseGamesDB.jsx";
 
 export default function CatalogPage(props) {
   let activePage = "shop";
