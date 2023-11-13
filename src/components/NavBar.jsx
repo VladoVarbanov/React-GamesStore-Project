@@ -67,7 +67,7 @@ export default function Header({ activePage }) {
                     className={activeTab === "details" ? "active" : ""}
                     onClick={() => handleTabClick("details")}
                   >
-                    Sign In
+                    Sign Up
                   </Link>
                 </li>
               </ul>
