@@ -1,26 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { logOut } from "../services/firebaseGamesDB.jsx";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { currentUser } from "../services/firebaseGamesDB.jsx";
 
 export default function Header({ activePage }) {
-  const auth = getAuth();
-
-  const [user, setUser] = useState("");
-  useEffect(() => {
-    onAuthStateChanged(auth, (userDB) => {
-      if (userDB) {
-        setUser(userDB.email);
-        // console.log("User status changed: ", userDB.email);
-      } else {
-        setUser("");
-
-        // console.log("User status changed: ", userDB);
-      }
-    });
-  }, []);
-
-  console.log(user);
   let page = "";
   if (activePage === "home") {
     page = "home";
@@ -38,7 +21,7 @@ export default function Header({ activePage }) {
   const signOut = () => {
     logOut();
   };
-
+  const user = currentUser();
   return (
     <header className="header-area header-sticky">
       <div className="container">

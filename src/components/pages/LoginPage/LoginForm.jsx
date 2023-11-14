@@ -3,8 +3,7 @@ import { SubmitContext } from "../../../contexts/SubmitContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function LoginForm(params) {
-  const { options, err, values, onChangeHandler, onSubmit } =
-    useContext(SubmitContext);
+  const { err, values, onChangeHandler, onSubmit } = useContext(SubmitContext);
   return (
     <div className="d-flex justify-content-center align-items-center m-5 px-15 ">
       <div className="container col-sm-2">

@@ -1,5 +1,5 @@
 import { initializeFirebase } from "./firebaseConfigDB.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   getAuth,
   signOut,
@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { UserContext } from "../contexts/SubmitContext.jsx";
 
 // init services
 const db = getFirestore();
@@ -39,7 +40,6 @@ export const allGames = () => {
 };
 
 export const singUp = async ({ username, email, password }) => {
-  console.log({ username, email, password });
   await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(auth.currentUser, { displayName: username });
 };
@@ -47,7 +47,6 @@ export const singUp = async ({ username, email, password }) => {
 export const singIn = ({ email, password }) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log(cred);
       return cred.user.email;
     })
     .catch((err) => console.log(err.message));
@@ -57,20 +56,16 @@ export const logOut = () => {
   signOut(auth);
 };
 
-// export const currentUser = () => {
-//   const [user, setUser] = useState("");
-//   useEffect(() => {
-//     onAuthStateChanged(auth, (userDB) => {
-//       if (userDB !== null) {
-//         setUser(userDB.email);
-//         // console.log("User status changed: ", userDB.email);
-//       } else {
-//         setUser("");
-
-//         // console.log("User status changed: ", userDB);
-//       }
-//     });
-//   }, [user]);
-
-//   return user;
-// };
+export const currentUser = () => {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (userDB) => {
+      if (userDB) {
+        setUser(userDB.email);
+      } else {
+        setUser("");
+      }
+    });
+  }, []);
+  return user;
+};
