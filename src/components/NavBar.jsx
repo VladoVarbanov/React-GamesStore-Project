@@ -9,7 +9,7 @@ export default function Header({ activePage }) {
   const [user, setUser] = useState("");
   useEffect(() => {
     onAuthStateChanged(auth, (userDB) => {
-      if (userDB !== null) {
+      if (userDB) {
         setUser(userDB.email);
         // console.log("User status changed: ", userDB.email);
       } else {

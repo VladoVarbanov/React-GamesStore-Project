@@ -6,13 +6,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // init services
 const db = getFirestore();
-const auth = getAuth();
+const auth = getAuth(initializeFirebase);
 
 // collection ref
 const colRef = collection(db, "companies");
@@ -37,17 +38,16 @@ export const allGames = () => {
   return games;
 };
 
-export const singUp = ({ username, email, password }) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((cred) => {
-      return cred.user.email;
-    })
-    .catch((err) => console.log(err.message));
+export const singUp = async ({ username, email, password }) => {
+  console.log({ username, email, password });
+  await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(auth.currentUser, { displayName: username });
 };
 
 export const singIn = ({ email, password }) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
+      console.log(cred);
       return cred.user.email;
     })
     .catch((err) => console.log(err.message));
