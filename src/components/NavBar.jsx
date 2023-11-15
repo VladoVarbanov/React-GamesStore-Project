@@ -73,12 +73,20 @@ export default function Header({ activePage }) {
                     Product Details
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="product-details.html">Meet the Indies</a>
-                </li>
+                </li> */}
                 <li>
                   <a href="contact.html">Contact Us</a>
                 </li>
+
+                {user ? (
+                  <li>
+                    <a href="contact.html">{user}</a>
+                  </li>
+                ) : (
+                  ""
+                )}
                 {user === "" ? (
                   <li>
                     <Link

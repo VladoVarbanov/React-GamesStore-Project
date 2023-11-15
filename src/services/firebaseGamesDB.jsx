@@ -9,15 +9,17 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 import { UserContext } from "../contexts/SubmitContext.jsx";
 
 // init services
 const db = getFirestore();
 const auth = getAuth(initializeFirebase);
+const user = auth.currentUser;
 
 // collection ref
-const colRef = collection(db, "companies");
+// const colRef = collection(db, "companies");
+const colRef = collection(db, "games");
 
 // take all games from DB.
 export const allGames = () => {
@@ -39,11 +41,25 @@ export const allGames = () => {
   return games;
 };
 
+// Add doc to collection.
+export const addGame = ({ gameTitle, imgUrl, price, genre }) => {
+  addDoc(colRef, {
+    gameTitle,
+    imgUrl,
+    price: Number(price),
+    genre,
+    rating: [],
+    owner: auth.currentUser.uid,
+  });
+};
+
+// Registration
 export const singUp = async ({ username, email, password }) => {
   await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(auth.currentUser, { displayName: username });
 };
 
+// Login
 export const singIn = ({ email, password }) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
@@ -61,7 +77,7 @@ export const currentUser = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (userDB) => {
       if (userDB) {
-        setUser(userDB.email);
+        setUser(userDB.displayName);
       } else {
         setUser("");
       }

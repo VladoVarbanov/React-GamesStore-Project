@@ -1,14 +1,25 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { addGame } from "../../../services/firebaseGamesDB.jsx";
 
 export default function SellForm(props) {
   //   const { options, err, values, onChangeHandler, onSubmit, radioButtons } =
   //     useContext(SubmitContext);
-  const onSubmit = () => console.log("Ok");
-  const [genreOptions, setGenreOptions] = useState("Select Genre");
+  const [genre, setGenre] = useState("Select Genre");
+  const [gameTitle, setGameTitle] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [price, setPrice] = useState("");
+  const navigate = useNavigate();
 
   const dropdownChangeHandler = (e) => {
-    setGenreOptions(e.target.innerText);
+    setGenre(e.target.innerText);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    await addGame({ gameTitle, imgUrl, price, genre });
+    navigate("/");
   };
   return (
     <div className="d-flex justify-content-center align-items-center m-5 px-15 ">
@@ -25,8 +36,8 @@ export default function SellForm(props) {
                   id="gameTitle"
                   name="gameTitle"
                   placeholder="Enter the Game's Name"
-                  //   value={values.username}
-                  //   onChange={onChangeHandler}
+                  value={gameTitle}
+                  onChange={(e) => setGameTitle(e.target.value)}
                   required
                 />
                 <div
@@ -50,8 +61,8 @@ export default function SellForm(props) {
                   id="imgUrl"
                   name="imgUrl"
                   placeholder="Enter Game Image Link"
-                  //   value={values.username}
-                  //   onChange={onChangeHandler}
+                  value={imgUrl}
+                  onChange={(e) => setImgUrl(e.target.value)}
                   required
                 />
                 <div
@@ -73,8 +84,8 @@ export default function SellForm(props) {
                   id="price"
                   name="price"
                   placeholder="Enter Game Price"
-                  //   value={values.username}
-                  //   onChange={onChangeHandler}
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                   required
                 />
                 <div
@@ -89,12 +100,12 @@ export default function SellForm(props) {
             {/* Game Genre */}
             <div className="d-flex justify-content-center dropdown">
               <Link
-                className="btn btn-success dropdown-toggle"
+                className="btn btn-success dropdown-toggle col-sm-8"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {genreOptions}
+                {genre}
               </Link>
 
               <ul className="dropdown-menu">
@@ -150,8 +161,8 @@ export default function SellForm(props) {
             </div>
 
             <div className="d-flex justify-content-center mt-5">
-              <button type="submit" className="btn btn-primary col-sm-5">
-                SIGN UP
+              <button type="submit" className="btn btn-primary col-sm-8">
+                Add Game
               </button>
             </div>
           </div>
