@@ -5,6 +5,7 @@ import CatalogPage from "./components/pages/CatalogPage.jsx";
 import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
 import RegisterPage from "./components/pages/RegistrationPage.jsx";
 import LoginPage from "./components/pages/LoginPage.jsx";
+import SellPage from "./components/pages/SellPage.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/product-details" element={<ProductDetails />} />
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/sell" element={<SellPage />} />
       </Routes>
     </>
   );
