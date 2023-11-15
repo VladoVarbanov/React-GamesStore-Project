@@ -11,6 +11,8 @@ export default function Header({ activePage }) {
     page = "shop";
   } else if (activePage === "details") {
     page = "details";
+  } else if (activePage === "sell") {
+    page = "sell";
   }
   const [activeTab, setActiveTab] = useState(page);
 
@@ -51,6 +53,15 @@ export default function Header({ activePage }) {
                     onClick={() => handleTabClick("shop")}
                   >
                     Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/sell"
+                    className={activeTab === "sell" ? "active" : ""}
+                    onClick={() => handleTabClick("sell")}
+                  >
+                    Sell Game
                   </Link>
                 </li>
                 <li>
