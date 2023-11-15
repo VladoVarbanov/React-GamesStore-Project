@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GamesContext } from "../../../contexts/GamesContext.jsx";
+import { Link } from "react-router-dom";
 
 export default function Trending(props) {
   const games = useContext(GamesContext);
@@ -15,7 +16,7 @@ export default function Trending(props) {
           </div>
           <div className="col-lg-6">
             <div className="main-button">
-              <a href="shop.html">View All</a>
+              <Link to={"/shop"}>View All</Link>
             </div>
           </div>
 
