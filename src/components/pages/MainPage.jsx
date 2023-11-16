@@ -20,7 +20,7 @@ export default function MainPage(props) {
       <GamesContext.Provider value={allGames()}>
         <MainBanner />
 
-        <Futures />
+        {/* <Futures /> */}
 
         <Trending />
 
