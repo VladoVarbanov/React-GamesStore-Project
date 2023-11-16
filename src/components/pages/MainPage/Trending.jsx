@@ -19,8 +19,7 @@ export default function Trending(props) {
               <Link to={"/shop"}>View All</Link>
             </div>
           </div>
-
-          {games.map((game) => (
+          {games.slice(0, 4).map((game) => (
             <div className="col-lg-3 col-md-6" key={game.id}>
               <div className="item">
                 <div className="thumb">

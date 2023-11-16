@@ -21,7 +21,7 @@ export default function TopGames(props) {
             </div>
           </div>
 
-          {games.map((game) => (
+          {games.slice(0, 6).map((game) => (
             <div className="col-lg-2 col-md-6 col-sm-6" key={game.id}>
               <div className="item">
                 <div className="thumb">

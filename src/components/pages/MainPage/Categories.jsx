@@ -15,7 +15,7 @@ export default function Categories(props) {
             </div>
           </div>
 
-          {games.map((game) => (
+          {games.slice(0, 4).map((game) => (
             <div className="col-lg col-sm-6 col-xs-12" key={game.id}>
               <div className="item">
                 <h4>{game.genre}</h4>
