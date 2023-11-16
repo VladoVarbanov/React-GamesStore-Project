@@ -2,14 +2,8 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "./CatalogPage/ShopStocks.jsx";
-import { GamesContext } from "../../contexts/GamesContext.jsx";
-import { allGames, gameDetails } from "../../services/firebaseGamesDB.jsx";
-import { useState } from "react";
-
 export default function CatalogPage(props) {
-  const [gameId, setGameId] = useState("");
   let activePage = "shop";
-  const games = allGames();
 
   return (
     <>
@@ -27,9 +21,7 @@ export default function CatalogPage(props) {
           </div>
         </div>
       </div>
-      <GamesContext.Provider value={games}>
-        <ShopStocks />
-      </GamesContext.Provider>
+      <ShopStocks />
 
       <Footer />
     </>

@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import MoreProductInfo from "./ProductDetailsPage/MoreProductInfo.jsx";
 import RelatedGames from "./ProductDetailsPage/RelatedGames.jsx";
 import SingleProductSection from "./ProductDetailsPage/SingleProductSection.jsx";
 import { Link } from "react-router-dom";
+import { gameDetails } from "../../services/firebaseGamesDB.jsx";
 
-export default function ProductDetails(props) {
+export default function ProductDetails({ id }) {
   let activePage = "details";
+
+  const game = gameDetails(id);
+  console.log(game);
 
   return (
     <>

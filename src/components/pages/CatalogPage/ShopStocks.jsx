@@ -1,16 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GamesContext } from "../../../contexts/GamesContext.jsx";
-import { Link, useNavigate } from "react-router-dom";
-import { gameDetails } from "../../../services/firebaseGamesDB.jsx";
+import { Link } from "react-router-dom";
 
 export default function ShopStocks(props) {
-  const games = useContext(GamesContext);
-  const navigate = useNavigate();
-  const setId = (id) => {
-    gameDetails(id);
-    console.log(id);
-    navigate("/");
-  };
+  const { games, setGameId } = useContext(GamesContext);
 
   return (
     <div className="section trending">
@@ -46,8 +39,10 @@ export default function ShopStocks(props) {
               <div className="item">
                 <div className="thumb">
                   <Link
-                    to={`/product-details/${game.id}`}
-                    onClick={(e) => setId(game.id)}
+                    to={`/product-details`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
                   >
                     <img src={game.imgUrl} alt="" />
                   </Link>
@@ -58,7 +53,7 @@ export default function ShopStocks(props) {
                 <div className="down-content">
                   <span className="category">{game.genre}</span>
                   <h4>{game.game}</h4>
-                  <Link onClick={() => setId(game.id)}>
+                  <Link onClick={() => setGameId(game.id)}>
                     <i className="fa fa-shopping-bag"></i>
                   </Link>
                 </div>

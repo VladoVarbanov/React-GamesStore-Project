@@ -6,8 +6,6 @@ import NavBar from "../NavBar.jsx";
 import MainBanner from "./MainPage/MainBanner.jsx";
 import TopGames from "./MainPage/TopGames.jsx";
 import Trending from "./MainPage/Trending.jsx";
-import { GamesContext } from "../../contexts/GamesContext.jsx";
-import { allGames } from "../../services/firebaseGamesDB.jsx";
 
 export default function MainPage(props) {
   let activePage = "home";
@@ -17,19 +15,17 @@ export default function MainPage(props) {
       {/* <!-- ***** Header Area Start ***** --> */}
       <NavBar activePage={activePage} />
       {/* <!-- ***** Header Area End ***** --> */}
-      <GamesContext.Provider value={allGames()}>
-        <MainBanner />
+      <MainBanner />
 
-        {/* <Futures /> */}
+      {/* <Futures /> */}
 
-        <Trending />
+      <Trending />
 
-        <TopGames />
+      <TopGames />
 
-        <Categories />
+      <Categories />
 
-        {/* <CallToAction /> */}
-      </GamesContext.Provider>
+      {/* <CallToAction /> */}
 
       <Footer />
     </>

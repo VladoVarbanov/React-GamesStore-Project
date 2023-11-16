@@ -17,7 +17,6 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import { UserContext } from "../contexts/SubmitContext.jsx";
 
 // init services
 const db = getFirestore();
@@ -49,12 +48,17 @@ export const allGames = () => {
 };
 
 // Take one Game.
-export const gameDetails = async (id) => {
-  if (id) {
-    const gameRef = await doc(db, "games", id);
-    const game = await getDoc(gameRef);
-    return game.data();
-  }
+export const gameDetails = (id) => {
+  const [game, setGame] = useState();
+  useEffect(() => {
+    const gameinfo = async () => {
+      const gameRef = await doc(db, "games", id);
+      const gameData = (await getDoc(gameRef)).data();
+      setGame(gameData);
+    };
+    gameinfo();
+  }, []);
+  return game;
 };
 
 // Add doc to collection.
