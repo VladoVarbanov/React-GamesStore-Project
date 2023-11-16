@@ -9,7 +9,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { UserContext } from "../contexts/SubmitContext.jsx";
 
 // init services
@@ -21,7 +28,7 @@ const user = auth.currentUser;
 // const colRef = collection(db, "companies");
 const colRef = collection(db, "games");
 
-// take all games from DB.
+// Take all games from DB.
 export const allGames = () => {
   const [games, setGames] = useState([]);
 
@@ -39,6 +46,15 @@ export const allGames = () => {
   }, []);
 
   return games;
+};
+
+// Take one Game.
+export const gameDetails = async (id) => {
+  if (id) {
+    const gameRef = await doc(db, "games", id);
+    const game = await getDoc(gameRef);
+    return game.data();
+  }
 };
 
 // Add doc to collection.

@@ -3,10 +3,13 @@ import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "./CatalogPage/ShopStocks.jsx";
 import { GamesContext } from "../../contexts/GamesContext.jsx";
-import { allGames } from "../../services/firebaseGamesDB.jsx";
+import { allGames, gameDetails } from "../../services/firebaseGamesDB.jsx";
+import { useState } from "react";
 
 export default function CatalogPage(props) {
+  const [gameId, setGameId] = useState("");
   let activePage = "shop";
+  const games = allGames();
 
   return (
     <>
@@ -24,7 +27,7 @@ export default function CatalogPage(props) {
           </div>
         </div>
       </div>
-      <GamesContext.Provider value={allGames()}>
+      <GamesContext.Provider value={games}>
         <ShopStocks />
       </GamesContext.Provider>
 
