@@ -21,7 +21,7 @@ import {
 // init services
 const db = getFirestore();
 const auth = getAuth(initializeFirebase);
-const user = auth.currentUser;
+export const user = auth.currentUser;
 
 // collection ref
 // const colRef = collection(db, "companies");
@@ -57,7 +57,7 @@ export const gameDetails = (id) => {
       setGame(gameData);
     };
     gameInfo();
-  }, []);
+  }, [id]);
   return game;
 };
 
@@ -97,7 +97,7 @@ export const currentUser = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (userDB) => {
       if (userDB) {
-        setUser(userDB.displayName);
+        setUser(userDB);
       } else {
         setUser("");
       }
