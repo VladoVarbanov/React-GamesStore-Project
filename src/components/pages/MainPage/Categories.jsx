@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { GamesContext } from "../../../contexts/GamesContext.jsx";
+import { Link } from "react-router-dom";
 
 export default function Categories(props) {
-  const games = useContext(GamesContext);
-
+  const { games, setGameId } = useContext(GamesContext);
   return (
     <div className="section categories">
       <div className="container">
@@ -20,9 +20,14 @@ export default function Categories(props) {
               <div className="item">
                 <h4>{game.genre}</h4>
                 <div className="thumb">
-                  <a href="product-details.html">
+                  <Link
+                    to={`/product-details`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
                     <img src={game.imgUrl} alt="" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

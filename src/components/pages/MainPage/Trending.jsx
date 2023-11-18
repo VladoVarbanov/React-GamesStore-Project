@@ -3,7 +3,8 @@ import { GamesContext } from "../../../contexts/GamesContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function Trending(props) {
-  const games = useContext(GamesContext);
+  const { games, setGameId } = useContext(GamesContext);
+
   return (
     <div className="section trending">
       <div className="container">
@@ -23,9 +24,14 @@ export default function Trending(props) {
             <div className="col-lg-3 col-md-6" key={game.id}>
               <div className="item">
                 <div className="thumb">
-                  <a href="product-details.html">
+                  <Link
+                    to={`/product-details`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
                     <img src={game.imgUrl} alt="" />
-                  </a>
+                  </Link>
                   <span className="price">
                     <em>${(game.price * 1.2).toFixed(2)}</em>${game.price}
                   </span>

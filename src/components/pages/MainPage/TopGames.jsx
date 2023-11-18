@@ -3,7 +3,7 @@ import { GamesContext } from "../../../contexts/GamesContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function TopGames(props) {
-  const games = useContext(GamesContext);
+  const { games, setGameId } = useContext(GamesContext);
 
   return (
     <div className="section most-played">
@@ -25,14 +25,26 @@ export default function TopGames(props) {
             <div className="col-lg-2 col-md-6 col-sm-6" key={game.id}>
               <div className="item">
                 <div className="thumb">
-                  <a href="product-details.html">
+                  <Link
+                    to={`/product-details`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
                     <img src={game.imgUrl} alt="" />
-                  </a>
+                  </Link>
                 </div>
                 <div className="down-content">
                   <span className="category">{game.genre}</span>
                   <h4>{game.game}</h4>
-                  <a href="product-details.html">Explore</a>
+                  <Link
+                    to={`/product-details`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
+                    Explore
+                  </Link>
                 </div>
               </div>
             </div>
