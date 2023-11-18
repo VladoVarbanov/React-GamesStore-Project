@@ -1,17 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import MoreProductInfo from "./ProductDetailsPage/MoreProductInfo.jsx";
 import RelatedGames from "./ProductDetailsPage/RelatedGames.jsx";
 import SingleProductSection from "./ProductDetailsPage/SingleProductSection.jsx";
 import { Link } from "react-router-dom";
-import { gameDetails } from "../../services/firebaseGamesDB.jsx";
+import { GameContext } from "../../contexts/GamesContext.jsx";
 
-export default function ProductDetails({ id }) {
+export default function ProductDetails() {
   let activePage = "details";
 
-  const game = gameDetails(id);
-  console.log(game);
+  const { id, game } = useContext(GameContext);
 
   return (
     <>
@@ -21,10 +20,10 @@ export default function ProductDetails({ id }) {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Modern Warfare® II</h3>
+              <h3>{game.gameTitle}</h3>
               <span className="breadcrumb">
-                <Link to="/">Home</Link> {">"} <Link to="/catalog">Shop</Link>{" "}
-                {">"} Assasin Creed
+                <Link to="/">Home</Link> {">"} <Link to="/shop">Shop</Link>{" "}
+                {">"} {game.gameTitle}
               </span>
             </div>
           </div>
