@@ -49,14 +49,14 @@ export const allGames = () => {
 
 // Take one Game.
 export const gameDetails = (id) => {
-  const [game, setGame] = useState();
+  const [game, setGame] = useState({});
   useEffect(() => {
-    const gameinfo = async () => {
+    const gameInfo = async () => {
       const gameRef = await doc(db, "games", id);
       const gameData = (await getDoc(gameRef)).data();
       setGame(gameData);
     };
-    gameinfo();
+    gameInfo();
   }, []);
   return game;
 };
