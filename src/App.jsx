@@ -6,9 +6,9 @@ import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
 import RegisterPage from "./components/pages/RegistrationPage.jsx";
 import LoginPage from "./components/pages/LoginPage.jsx";
 import SellPage from "./components/pages/SellPage.jsx";
-import { GamesContext } from "./contexts/GamesContext.jsx";
-import { allGames } from "./services/firebaseGamesDB.jsx";
-import { useState } from "react";
+import { GamesContext, GameContext } from "./contexts/GamesContext.jsx";
+import { useEffect, useState } from "react";
+import { allGames, gameDetails } from "./services/firebaseGamesDB.jsx";
 
 function App() {
   const [id, setId] = useState("");
@@ -18,8 +18,13 @@ function App() {
     gameId = id;
   };
 
+  const game = gameDetails(id);
   const games = allGames();
   const gameData = {
+    id,
+    game,
+  };
+  const gamesData = {
     games,
     setGameId,
   };
@@ -42,7 +47,7 @@ function App() {
         <Route
           path="/"
           element={
-            <GamesContext.Provider value={allGames()}>
+            <GamesContext.Provider value={gamesData}>
               <MainPage />
             </GamesContext.Provider>
           }
@@ -50,12 +55,19 @@ function App() {
         <Route
           path="/shop"
           element={
-            <GamesContext.Provider value={gameData}>
+            <GamesContext.Provider value={gamesData}>
               <CatalogPage />
             </GamesContext.Provider>
           }
         />
-        <Route path="/product-details" element={<ProductDetails id={id} />} />
+        <Route
+          path="/product-details"
+          element={
+            <GameContext.Provider value={gameData}>
+              <ProductDetails />
+            </GameContext.Provider>
+          }
+        />
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sell" element={<SellPage />} />
