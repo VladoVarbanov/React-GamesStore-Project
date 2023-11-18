@@ -8,10 +8,10 @@ import LoginPage from "./components/pages/LoginPage.jsx";
 import SellPage from "./components/pages/SellPage.jsx";
 import { GamesContext } from "./contexts/GamesContext.jsx";
 import { allGames } from "./services/firebaseGamesDB.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [id, setId] = useState("TEST");
+  const [id, setId] = useState("");
   let gameId = "";
   const setGameId = (id) => {
     setId(id);
