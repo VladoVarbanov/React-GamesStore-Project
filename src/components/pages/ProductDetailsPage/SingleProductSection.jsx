@@ -1,48 +1,65 @@
-export default function SingleProductSection(props) {
+import { useContext } from "react";
+import { GameContext } from "../../../contexts/GamesContext.jsx";
+import { currentUser } from "../../../services/firebaseGamesDB.jsx";
+
+export default function SingleProductSection() {
+  const { id, game } = useContext(GameContext);
+  const user = currentUser();
+  let rating = "";
+  if (game.rating !== undefined) {
+    rating = (
+      game.rating.reduce((a, c) => a + c, 0) / game.rating.length
+    ).toFixed(2);
+  }
   return (
     <div className="single-product section">
       <div className="container">
         <div className="row">
           <div className="col-lg-6">
             <div className="left-image">
-              <img src="/images/single-game.jpg" alt="" />
+              <img src={game.imgUrl} alt="" />
             </div>
           </div>
           <div className="col-lg-6 align-self-center">
-            <h4>Call of Duty®: Modern Warfare® II</h4>
+            <h4>{game.gameTitle}</h4>
             <span className="price">
-              <em>$28</em> $22
+              <em>${(game.price * 1.2).toFixed(2)}</em> ${game.price}
             </span>
-            <p>
-              LUGX Gaming Template is based on the latest Bootstrap 5 CSS
-              framework. This template is provided by TemplateMo and it is
-              suitable for your gaming shop ecommerce websites. Feel free to use
-              this for any purpose. Thank you.
-            </p>
+            <p>{game.info}</p>
             <form id="qty" action="#">
-              <input
+              {/* <input
                 type="qty"
                 className="form-control"
                 id="1"
                 aria-describedby="quantity"
                 placeholder="1"
-              />
-              <button type="submit">
-                <i className="fa fa-shopping-bag"></i> ADD TO CART
-              </button>
+              /> */}
+              {user?.uid !== game.owner ? (
+                <button type="submit">
+                  <i className="fa fa-shopping-bag"></i> Buy
+                </button>
+              ) : (
+                <div>
+                  <button type="submit">
+                    <i className="fa fa-shopping-bag"></i> Edit
+                  </button>
+                  <button type="submit" className="mx-5">
+                    <i className="fa fa-shopping-bag "></i> Delete
+                  </button>
+                </div>
+              )}
             </form>
             <ul>
               <li>
-                <span>Game ID:</span> COD MMII
+                <span>Raiting</span> {rating}
               </li>
               <li>
-                <span>Genre:</span> <a href="#">Action</a>,<a href="#">Team</a>,{" "}
-                <a href="#">Single</a>
+                <span>Genre:</span> <a href="#">{game.genre}</a>
               </li>
-              <li>
+              {/* <li>
                 <span>Multi-tags:</span> <a href="#">War</a>,
                 <a href="#">Battle</a>, <a href="#">Royal</a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="col-lg-12">
