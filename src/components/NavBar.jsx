@@ -82,7 +82,7 @@ export default function Header({ activePage }) {
 
                 {user ? (
                   <li>
-                    <a href="contact.html">{user}</a>
+                    <Link href="contact.html">{user.displayName}</Link>
                   </li>
                 ) : (
                   ""
