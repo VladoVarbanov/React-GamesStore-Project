@@ -3,13 +3,16 @@ import { GameContext } from "../../../contexts/GamesContext.jsx";
 import { currentUser } from "../../../services/firebaseGamesDB.jsx";
 
 export default function SingleProductSection() {
-  const { id, game } = useContext(GameContext);
+  const game = useContext(GameContext);
   const user = currentUser();
   let rating = "";
+
   if (game.rating !== undefined) {
     rating = (
       game.rating.reduce((a, c) => a + c, 0) / game.rating.length
     ).toFixed(2);
+  } else {
+    rating = "";
   }
   return (
     <div className="single-product section">
@@ -17,15 +20,15 @@ export default function SingleProductSection() {
         <div className="row">
           <div className="col-lg-6">
             <div className="left-image">
-              <img src={game.imgUrl} alt="" />
+              <img src={game?.imgUrl} alt="" />
             </div>
           </div>
           <div className="col-lg-6 align-self-center">
-            <h4>{game.gameTitle}</h4>
+            <h4>{game?.gameTitle}</h4>
             <span className="price">
-              <em>${(game.price * 1.2).toFixed(2)}</em> ${game.price}
+              <em>${(game?.price * 1.2).toFixed(2)}</em> ${game?.price}
             </span>
-            <p>{game.info}</p>
+            <p>{game?.info}</p>
             <form id="qty" action="#">
               {/* <input
                 type="qty"
@@ -34,16 +37,16 @@ export default function SingleProductSection() {
                 aria-describedby="quantity"
                 placeholder="1"
               /> */}
-              {user?.uid !== game.owner ? (
-                <button type="submit">
+              {user?.uid !== game?.owner ? (
+                <button type="button">
                   <i className="fa fa-shopping-bag"></i> Buy
                 </button>
               ) : (
                 <div>
-                  <button type="submit">
+                  <button type="button">
                     <i className="fa fa-shopping-bag"></i> Edit
                   </button>
-                  <button type="submit" className="mx-5">
+                  <button type="button" className="mx-5">
                     <i className="fa fa-shopping-bag "></i> Delete
                   </button>
                 </div>
@@ -54,7 +57,7 @@ export default function SingleProductSection() {
                 <span>Raiting</span> {rating}
               </li>
               <li>
-                <span>Genre:</span> <a href="#">{game.genre}</a>
+                <span>Genre:</span> <a href="#">{game?.genre}</a>
               </li>
               {/* <li>
                 <span>Multi-tags:</span> <a href="#">War</a>,

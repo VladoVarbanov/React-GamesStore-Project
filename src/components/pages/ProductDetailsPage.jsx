@@ -4,13 +4,15 @@ import NavBar from "../NavBar.jsx";
 import MoreProductInfo from "./ProductDetailsPage/MoreProductInfo.jsx";
 import RelatedGames from "./ProductDetailsPage/RelatedGames.jsx";
 import SingleProductSection from "./ProductDetailsPage/SingleProductSection.jsx";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { gameDetails } from "../../services/firebaseGamesDB.jsx";
 import { GameContext } from "../../contexts/GamesContext.jsx";
 
 export default function ProductDetails() {
+  // const { id, game } = useContext(GameContext);
+  const { gameId } = useParams();
   let activePage = "details";
-
-  const { id, game } = useContext(GameContext);
+  const game = gameDetails(gameId);
 
   return (
     <>
@@ -29,12 +31,13 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+      <GameContext.Provider value={game}>
+        <SingleProductSection />
 
-      <SingleProductSection />
+        <MoreProductInfo />
 
-      <MoreProductInfo />
-
-      <RelatedGames />
+        <RelatedGames />
+      </GameContext.Provider>
 
       <Footer />
     </>

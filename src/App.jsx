@@ -6,8 +6,8 @@ import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
 import RegisterPage from "./components/pages/RegistrationPage.jsx";
 import LoginPage from "./components/pages/LoginPage.jsx";
 import SellPage from "./components/pages/SellPage.jsx";
-import { GamesContext, GameContext } from "./contexts/GamesContext.jsx";
-import { useEffect, useState } from "react";
+import { GamesContext } from "./contexts/GamesContext.jsx";
+import { useState } from "react";
 import { allGames, gameDetails } from "./services/firebaseGamesDB.jsx";
 
 function App() {
@@ -18,12 +18,7 @@ function App() {
     gameId = id;
   };
 
-  const game = gameDetails(id);
   const games = allGames();
-  const gameData = {
-    id,
-    game,
-  };
   const gamesData = {
     games,
     setGameId,
@@ -60,14 +55,7 @@ function App() {
             </GamesContext.Provider>
           }
         />
-        <Route
-          path="/product-details/*"
-          element={
-            <GameContext.Provider value={gameData}>
-              <ProductDetails />
-            </GameContext.Provider>
-          }
-        />
+        <Route path="/product-details/:gameId" element={<ProductDetails />} />
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sell" element={<SellPage />} />
