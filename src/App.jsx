@@ -61,7 +61,7 @@ function App() {
           }
         />
         <Route
-          path="/product-details"
+          path="/product-details/*"
           element={
             <GameContext.Provider value={gameData}>
               <ProductDetails />

@@ -39,7 +39,7 @@ export default function ShopStocks(props) {
               <div className="item">
                 <div className="thumb">
                   <Link
-                    to={`/product-details`}
+                    to={`/product-details/${game.id}`}
                     onClick={async (e) => {
                       setGameId(game.id);
                     }}

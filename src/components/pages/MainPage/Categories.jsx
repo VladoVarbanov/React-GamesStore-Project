@@ -21,7 +21,7 @@ export default function Categories(props) {
                 <h4>{game.genre}</h4>
                 <div className="thumb">
                   <Link
-                    to={`/product-details`}
+                    to={`/product-details/${game.id}`}
                     onClick={async (e) => {
                       setGameId(game.id);
                     }}
