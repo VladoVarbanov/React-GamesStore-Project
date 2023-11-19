@@ -9,6 +9,7 @@ import SellPage from "./components/pages/SellPage.jsx";
 import { GamesContext } from "./contexts/GamesContext.jsx";
 import { useState } from "react";
 import { allGames, gameDetails } from "./services/firebaseGamesDB.jsx";
+import EditPage from "./components/pages/EditPage.jsx";
 
 function App() {
   const [id, setId] = useState("");
@@ -59,6 +60,7 @@ function App() {
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sell" element={<SellPage />} />
+        <Route path="/edit/:gameId" element={<EditPage />} />
       </Routes>
     </>
   );
