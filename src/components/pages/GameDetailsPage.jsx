@@ -9,7 +9,6 @@ import { gameDetails } from "../../services/firebaseGamesDB.jsx";
 import { GameContext } from "../../contexts/GamesContext.jsx";
 
 export default function ProductDetails() {
-  // const { id, game } = useContext(GameContext);
   const { gameId } = useParams();
   let activePage = "details";
   const game = gameDetails(gameId);

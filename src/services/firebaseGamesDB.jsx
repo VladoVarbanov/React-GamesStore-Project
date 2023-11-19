@@ -16,6 +16,7 @@ import {
   addDoc,
   doc,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 // init services
@@ -71,6 +72,24 @@ export const addGame = ({ gameTitle, imgUrl, price, genre }) => {
     rating: [],
     owner: auth.currentUser.uid,
   });
+};
+
+// Edit Game
+export const editGame = async (
+  id,
+  { gameTitle, imgUrl, price, info, description, genre }
+) => {
+  const gameRef = await doc(db, "games", id);
+  const updatedGame = await updateDoc(gameRef, {
+    gameTitle,
+    imgUrl,
+    price,
+    info,
+    description,
+    genre,
+  });
+
+  return updatedGame;
 };
 
 // Registration
