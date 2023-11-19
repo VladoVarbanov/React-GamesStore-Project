@@ -66,7 +66,7 @@ export default function Header({ activePage }) {
                 </li>
                 <li>
                   <Link
-                    to="/product-details"
+                    to="/game-details"
                     className={activeTab === "details" ? "active" : ""}
                     onClick={() => handleTabClick("details")}
                   >
@@ -74,7 +74,7 @@ export default function Header({ activePage }) {
                   </Link>
                 </li>
                 {/* <li>
-                  <a href="product-details.html">Meet the Indies</a>
+                  <a href="game-details.html">Meet the Indies</a>
                 </li> */}
                 <li>
                   <a href="contact.html">Contact Us</a>

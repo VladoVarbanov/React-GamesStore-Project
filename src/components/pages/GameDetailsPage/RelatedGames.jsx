@@ -18,7 +18,7 @@ export default function RelatedGames(props) {
             <div className="item">
               <h4>Action</h4>
               <div className="thumb">
-                <a href="product-details.html">
+                <a href="game-details.html">
                   <img src="/images/categories-01.jpg" alt="" />
                 </a>
               </div>
@@ -28,7 +28,7 @@ export default function RelatedGames(props) {
             <div className="item">
               <h4>Action</h4>
               <div className="thumb">
-                <a href="product-details.html">
+                <a href="game-details.html">
                   <img src="/images/categories-05.jpg" alt="" />
                 </a>
               </div>
@@ -38,7 +38,7 @@ export default function RelatedGames(props) {
             <div className="item">
               <h4>Action</h4>
               <div className="thumb">
-                <a href="product-details.html">
+                <a href="game-details.html">
                   <img src="/images/categories-03.jpg" alt="" />
                 </a>
               </div>
@@ -48,7 +48,7 @@ export default function RelatedGames(props) {
             <div className="item">
               <h4>Action</h4>
               <div className="thumb">
-                <a href="product-details.html">
+                <a href="game-details.html">
                   <img src="/images/categories-04.jpg" alt="" />
                 </a>
               </div>
@@ -58,7 +58,7 @@ export default function RelatedGames(props) {
             <div className="item">
               <h4>Action</h4>
               <div className="thumb">
-                <a href="product-details.html">
+                <a href="game-details.html">
                   <img src="/images/categories-05.jpg" alt="" />
                 </a>
               </div>

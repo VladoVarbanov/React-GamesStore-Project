@@ -26,7 +26,7 @@ export default function TopGames(props) {
               <div className="item">
                 <div className="thumb">
                   <Link
-                    to={`/product-details/${game.id}`}
+                    to={`/game-details/${game.id}`}
                     onClick={async (e) => {
                       setGameId(game.id);
                     }}
@@ -38,7 +38,7 @@ export default function TopGames(props) {
                   <span className="category">{game.genre}</span>
                   <h4>{game.game}</h4>
                   <Link
-                    to={`/product-details/${game.id}`}
+                    to={`/game-details/${game.id}`}
                     onClick={async (e) => {
                       setGameId(game.id);
                     }}

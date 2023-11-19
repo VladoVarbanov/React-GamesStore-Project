@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import MainPage from "./components/pages/MainPage.jsx";
 import CatalogPage from "./components/pages/CatalogPage.jsx";
-import ProductDetails from "./components/pages/ProductDetailsPage.jsx";
+import ProductDetails from "./components/pages/GameDetailsPage.jsx";
 import RegisterPage from "./components/pages/RegistrationPage.jsx";
 import LoginPage from "./components/pages/LoginPage.jsx";
 import SellPage from "./components/pages/SellPage.jsx";
@@ -55,7 +55,7 @@ function App() {
             </GamesContext.Provider>
           }
         />
-        <Route path="/product-details/:gameId" element={<ProductDetails />} />
+        <Route path="/game-details/:gameId" element={<ProductDetails />} />
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sell" element={<SellPage />} />

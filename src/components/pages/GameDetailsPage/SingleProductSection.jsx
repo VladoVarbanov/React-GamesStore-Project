@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { GameContext } from "../../../contexts/GamesContext.jsx";
 import { currentUser } from "../../../services/firebaseGamesDB.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleProductSection() {
-  const game = useContext(GameContext);
+  const { gameId, game } = useContext(GameContext);
   const user = currentUser();
+  const navigate = useNavigate();
   let rating = "";
 
   if (game.rating !== undefined) {
@@ -14,6 +16,11 @@ export default function SingleProductSection() {
   } else {
     rating = "";
   }
+
+  const onEdit = () => {
+    navigate(`/edit/${gameId}`);
+  };
+
   return (
     <div className="single-product section">
       <div className="container">
@@ -30,20 +37,13 @@ export default function SingleProductSection() {
             </span>
             <p>{game?.info}</p>
             <form id="qty" action="#">
-              {/* <input
-                type="qty"
-                className="form-control"
-                id="1"
-                aria-describedby="quantity"
-                placeholder="1"
-              /> */}
               {user?.uid !== game?.owner ? (
                 <button type="button">
                   <i className="fa fa-shopping-bag"></i> Buy
                 </button>
               ) : (
                 <div>
-                  <button type="button">
+                  <button type="button" onClick={onEdit}>
                     <i className="fa fa-shopping-bag"></i> Edit
                   </button>
                   <button type="button" className="mx-5">
