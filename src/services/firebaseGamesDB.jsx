@@ -92,6 +92,7 @@ export const logOut = () => {
   signOut(auth);
 };
 
+// Current LogIn User.
 export const currentUser = () => {
   const [user, setUser] = useState("");
   useEffect(() => {
