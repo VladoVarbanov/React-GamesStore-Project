@@ -9,7 +9,7 @@ import Trending from "./MainPage/Trending.jsx";
 
 export default function MainPage(props) {
   let activePage = "home";
-
+  window.scrollTo(0, 0);
   return (
     <>
       {/* <!-- ***** Header Area Start ***** --> */}

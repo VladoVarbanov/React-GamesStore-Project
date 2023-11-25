@@ -4,7 +4,7 @@ import SellForm from "./SellPage/SellForm.jsx";
 
 export default function SellPage(props) {
   let activePage = "sell";
-
+  window.scrollTo(0, 0);
   return (
     <>
       <NavBar activePage={activePage} />
