@@ -7,14 +7,14 @@ export default function SingleProductSection() {
   const { gameId, game } = useContext(GameContext);
   const user = currentUser();
   const navigate = useNavigate();
-  let rating = "";
+  let rating = 1.0;
 
   if (game.rating !== undefined) {
     rating = (
       game.rating.reduce((a, c) => a + c, 0) / game.rating.length
     ).toFixed(2);
   } else {
-    rating = "";
+    rating = 1.0;
   }
 
   const onEdit = () => {
