@@ -18,8 +18,8 @@ export default function EditPage(props) {
             <div className="col-lg-12">
               <h3>{game.gameTitle}</h3>
               <span className="breadcrumb">
-                <Link to="/">Home</Link> {">"} <Link to="/shop">Shop</Link>{" "}
-                {">"} {game.gameTitle}
+                <Link to="/">Home</Link> {">"}{" "}
+                <Link to="/catalog">Catalog</Link> {">"} {game.gameTitle}
               </span>
             </div>
           </div>

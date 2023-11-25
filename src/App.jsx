@@ -49,7 +49,7 @@ function App() {
           }
         />
         <Route
-          path="/shop"
+          path="/catalog"
           element={
             <GamesContext.Provider value={gamesData}>
               <CatalogPage />

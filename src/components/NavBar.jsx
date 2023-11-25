@@ -7,8 +7,8 @@ export default function Header({ activePage }) {
   let page = "";
   if (activePage === "home") {
     page = "home";
-  } else if (activePage === "shop") {
-    page = "shop";
+  } else if (activePage === "catalog") {
+    page = "catalog";
   } else if (activePage === "details") {
     page = "details";
   } else if (activePage === "sell") {
@@ -48,11 +48,11 @@ export default function Header({ activePage }) {
                 </li>
                 <li>
                   <Link
-                    to="/shop"
-                    className={activeTab === "shop" ? "active" : ""}
-                    onClick={() => handleTabClick("shop")}
+                    to="/catalog"
+                    className={activeTab === "catalog" ? "active" : ""}
+                    onClick={() => handleTabClick("catalog")}
                   >
-                    Shop
+                    Game Catalog
                   </Link>
                 </li>
                 <li>
@@ -64,15 +64,18 @@ export default function Header({ activePage }) {
                     Sell Game
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/game-details"
-                    className={activeTab === "details" ? "active" : ""}
-                    onClick={() => handleTabClick("details")}
-                  >
-                    Game Details
-                  </Link>
-                </li>
+                {activePage === "details" && (
+                  <li>
+                    <Link
+                      to="/game-details"
+                      className={activeTab === "details" ? "active" : ""}
+                      onClick={() => handleTabClick("details")}
+                    >
+                      Game Details
+                    </Link>
+                  </li>
+                )}
+
                 {/* <li>
                   <a href="game-details.html">Meet the Indies</a>
                 </li> */}
