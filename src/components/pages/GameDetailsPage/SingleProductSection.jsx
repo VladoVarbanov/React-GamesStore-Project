@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GameContext } from "../../../contexts/GamesContext.jsx";
 import { currentUser } from "../../../services/firebaseGamesDB.jsx";
 import { useNavigate } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import "../../../../public/css/rating.css";
 
 export default function SingleProductSection() {
   const { gameId, game } = useContext(GameContext);
+  const [ratingStars, setRatingStars] = useState(undefined);
+  const [hover, setHover] = useState(null);
   const user = currentUser();
   const navigate = useNavigate();
   let rating = 1.0;
@@ -54,11 +58,35 @@ export default function SingleProductSection() {
             </form>
             <ul>
               <li>
-                <span>Raiting</span> {rating}
+                <span>Rating</span> {rating}
               </li>
               <li>
                 <span>Genre:</span> <a href="#">{game?.genre}</a>
               </li>
+              {/* Star rating */}
+              <div>
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+
+                  return (
+                    <label key={i} htmlFor="" className="labelStar">
+                      <input type="radio" name="rating" value={ratingValue} />
+                      <FaStar
+                        className="star"
+                        color={
+                          ratingValue <= (hover || ratingStars)
+                            ? "#ffc107"
+                            : "#e4e5e9"
+                        }
+                        size={30}
+                        onClick={() => setRatingStars(ratingValue)}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />
+                    </label>
+                  );
+                })}
+              </div>
               {/* <li>
                 <span>Multi-tags:</span> <a href="#">War</a>,
                 <a href="#">Battle</a>, <a href="#">Royal</a>
