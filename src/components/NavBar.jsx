@@ -70,7 +70,7 @@ export default function Header({ activePage }) {
                     className={activeTab === "details" ? "active" : ""}
                     onClick={() => handleTabClick("details")}
                   >
-                    Product Details
+                    Game Details
                   </Link>
                 </li>
                 {/* <li>
