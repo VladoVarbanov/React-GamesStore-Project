@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function RelatedGames(props) {
   return (
     <div className="section categories related-games">
@@ -11,7 +13,7 @@ export default function RelatedGames(props) {
           </div>
           <div className="col-lg-6">
             <div className="main-button">
-              <a href="shop.html">View All</a>
+              <Link to="/catalog">View All</Link>
             </div>
           </div>
           <div className="col-lg col-sm-6 col-xs-12">
