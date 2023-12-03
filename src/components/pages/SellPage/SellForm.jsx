@@ -5,10 +5,12 @@ import { addGame } from "../../../services/firebaseGamesDB.jsx";
 export default function SellForm(props) {
   //   const { options, err, values, onChangeHandler, onSubmit, radioButtons } =
   //     useContext(SubmitContext);
-  const [genre, setGenre] = useState("Select Genre");
   const [gameTitle, setGameTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [price, setPrice] = useState("");
+  const [info, setInfo] = useState("");
+  const [description, setDescription] = useState("");
+  const [genre, setGenre] = useState("Select Genre");
   const navigate = useNavigate();
 
   const dropdownChangeHandler = (e) => {
@@ -18,7 +20,7 @@ export default function SellForm(props) {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    await addGame({ gameTitle, imgUrl, price, genre });
+    await addGame({ gameTitle, imgUrl, price, info, description, genre });
     navigate("/");
   };
   return (
@@ -93,6 +95,58 @@ export default function SellForm(props) {
                   className="invalid-feedback"
                 >
                   Please enter a Game Price.
+                </div>
+              </div>
+            </div>
+            {/* Game Info */}
+            <div className="row mb-4">
+              <label className="col-sm-8 col-form-label" htmlFor="gameInfo">
+                Game Info
+              </label>
+              <div className="col-sm-15">
+                <textarea
+                  type="text"
+                  className={`form-control`}
+                  id="gameInfo"
+                  name="gameInfo"
+                  placeholder="Enter Info for the Game"
+                  value={info}
+                  onChange={(e) => setInfo(e.target.value)}
+                  required
+                />
+                <div
+                  id="validationServerUsernameFeedback"
+                  className="invalid-feedback"
+                >
+                  Please enter a Game Info.
+                </div>
+              </div>
+            </div>
+
+            {/* Game Description */}
+            <div className="row mb-4">
+              <label
+                className="col-sm-8 col-form-label"
+                htmlFor="gameDescription"
+              >
+                Game Description
+              </label>
+              <div className="col-sm-15">
+                <textarea
+                  type="text"
+                  className={`form-control`}
+                  id="gameDescription"
+                  name="gameDescription"
+                  placeholder="Enter Description for the Game"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                />
+                <div
+                  id="validationServerUsernameFeedback"
+                  className="invalid-feedback"
+                >
+                  Please enter a Game Description.
                 </div>
               </div>
             </div>
