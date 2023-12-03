@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../../contexts/GamesContext.jsx";
-import { currentUser } from "../../../services/firebaseGamesDB.jsx";
+import { currentUser, deleteGame } from "../../../services/firebaseGamesDB.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import "../../../../public/css/rating.css";
@@ -26,6 +26,11 @@ export default function SingleProductSection() {
 
   const onEdit = () => {
     navigate(`/edit/${gameId}`);
+  };
+
+  const onDelete = () => {
+    deleteGame(gameId);
+    navigate("/catalog");
   };
 
   const setStars = async (ratingValue) => {
@@ -61,7 +66,7 @@ export default function SingleProductSection() {
                   <button type="button" onClick={onEdit}>
                     <i className="fa fa-shopping-bag"></i> Edit
                   </button>
-                  <button type="button" className="mx-5">
+                  <button type="button" className="mx-5" onClick={onDelete}>
                     <i className="fa fa-shopping-bag "></i> Delete
                   </button>
                 </div>

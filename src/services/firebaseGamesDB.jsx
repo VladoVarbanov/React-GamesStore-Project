@@ -17,6 +17,7 @@ import {
   doc,
   getDoc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 // init services
@@ -61,15 +62,28 @@ export const gameDetails = (id) => {
 };
 
 // Add doc to collection.
-export const addGame = ({ gameTitle, imgUrl, price, genre }) => {
+export const addGame = ({
+  gameTitle,
+  imgUrl,
+  price,
+  info,
+  description,
+  genre,
+}) => {
   addDoc(colRef, {
     gameTitle,
     imgUrl,
     price: Number(price),
+    info,
+    description,
     genre,
     rating: [],
     owner: auth.currentUser.uid,
   });
+};
+
+export const deleteGame = (id) => {
+  deleteDoc(doc(db, "games", id));
 };
 
 // Edit Game
