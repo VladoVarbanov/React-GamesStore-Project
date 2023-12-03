@@ -55,15 +55,20 @@ export default function Header({ activePage }) {
                     Game Catalog
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/sell"
-                    className={activeTab === "sell" ? "active" : ""}
-                    onClick={() => handleTabClick("sell")}
-                  >
-                    Sell Game
-                  </Link>
-                </li>
+                {user ? (
+                  <li>
+                    <Link
+                      to="/sell"
+                      className={activeTab === "sell" ? "active" : ""}
+                      onClick={() => handleTabClick("sell")}
+                    >
+                      Sell Game
+                    </Link>
+                  </li>
+                ) : (
+                  ""
+                )}
+
                 {activePage === "details" && (
                   <li>
                     <Link
@@ -79,13 +84,15 @@ export default function Header({ activePage }) {
                 {/* <li>
                   <a href="game-details.html">Meet the Indies</a>
                 </li> */}
-                <li>
+
+                {/* Contact Us */}
+                {/* <li>
                   <a href="contact.html">Contact Us</a>
-                </li>
+                </li> */}
 
                 {user ? (
                   <li>
-                    <Link href="contact.html">{user.displayName}</Link>
+                    <Link>{user.displayName}</Link>
                   </li>
                 ) : (
                   ""

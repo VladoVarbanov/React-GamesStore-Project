@@ -18,7 +18,7 @@ export default function TopGames(props) {
           </div>
           <div className="col-lg-6">
             <div className="main-button">
-              <Link to={"/shop"}>View All</Link>
+              <Link to="/catalog">View All</Link>
             </div>
           </div>
 
