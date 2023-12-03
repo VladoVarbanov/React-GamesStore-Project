@@ -26,7 +26,7 @@ export default function Categories(props) {
                       setGameId(game.id);
                     }}
                   >
-                    <img src={game.imgUrl} alt="" />
+                    <img className="image-container" src={game.imgUrl} alt="" />
                   </Link>
                 </div>
               </div>

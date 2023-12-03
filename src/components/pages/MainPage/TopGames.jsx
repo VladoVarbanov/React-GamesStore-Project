@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GamesContext } from "../../../contexts/GamesContext.jsx";
 import { Link } from "react-router-dom";
+// import "../../../../public/css/image.css";
 
 export default function TopGames(props) {
   const { games, setGameId } = useContext(GamesContext);
@@ -31,7 +32,7 @@ export default function TopGames(props) {
                       setGameId(game.id);
                     }}
                   >
-                    <img src={game.imgUrl} alt="" />
+                    <img className="image-container" src={game.imgUrl} alt="" />
                   </Link>
                 </div>
                 <div className="down-content">

@@ -1,0 +1,4 @@
+.image-container {
+  height: 200px; /* Set a fixed height */
+  object-fit: contain; /* Fit the entire image inside the defined dimensions */
+}

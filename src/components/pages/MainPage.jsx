@@ -6,6 +6,7 @@ import NavBar from "../NavBar.jsx";
 import MainBanner from "./MainPage/MainBanner.jsx";
 import TopGames from "./MainPage/TopGames.jsx";
 import Trending from "./MainPage/Trending.jsx";
+import "../../../public/css/image.css";
 
 export default function MainPage(props) {
   let activePage = "home";

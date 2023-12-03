@@ -30,7 +30,7 @@ export default function Trending(props) {
                       setGameId(game.id);
                     }}
                   >
-                    <img src={game.imgUrl} alt="" />
+                    <img className="image-container" src={game.imgUrl} alt="" />
                   </Link>
                   <span className="price">
                     <em>${(game.price * 1.2).toFixed(2)}</em>${game.price}
