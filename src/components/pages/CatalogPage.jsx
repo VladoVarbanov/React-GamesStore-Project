@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer.jsx";
 import NavBar from "../NavBar.jsx";
 import ShopStocks from "./CatalogPage/ShopStocks.jsx";
+import "../../../public/css/image.css";
+
 export default function CatalogPage(props) {
   let activePage = "catalog";
   window.scrollTo(0, 0);

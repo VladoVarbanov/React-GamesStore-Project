@@ -1,4 +1,7 @@
 .image-container {
-  height: 200px; /* Set a fixed height */
+  height: 200px;
+  width: 100%; /* Set a fixed height */
+  padding-top: 15px;
+  padding-bottom: 15px;
   object-fit: contain; /* Fit the entire image inside the defined dimensions */
 }
