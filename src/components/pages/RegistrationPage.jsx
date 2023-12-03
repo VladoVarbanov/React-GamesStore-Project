@@ -52,7 +52,9 @@ export default function RegisterPage(props) {
     }
 
     singUp(values);
-    navigate("/");
+    if (!err) {
+      navigate("/");
+    }
   };
   const SubmitValue = {
     options,

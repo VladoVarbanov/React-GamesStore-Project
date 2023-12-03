@@ -5,6 +5,7 @@ import { currentUser } from "../services/firebaseGamesDB.jsx";
 
 export default function Header({ activePage }) {
   let page = "";
+  const [activeTab, setActiveTab] = useState(page);
   if (activePage === "home") {
     page = "home";
   } else if (activePage === "catalog") {
@@ -14,7 +15,6 @@ export default function Header({ activePage }) {
   } else if (activePage === "sell") {
     page = "sell";
   }
-  const [activeTab, setActiveTab] = useState(page);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);

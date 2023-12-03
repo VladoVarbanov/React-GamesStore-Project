@@ -11,7 +11,7 @@ export default function RegistrationForm(props) {
         <form onSubmit={onSubmit}>
           <div className="">
             <fieldset className="row mb-5">
-              <div className="form-check">
+              {/* <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
@@ -24,8 +24,8 @@ export default function RegistrationForm(props) {
                 <label htmlFor="option1" className="form-check-label">
                   Company
                 </label>
-              </div>
-              <div className="form-check">
+              </div> */}
+              {/* <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
@@ -37,7 +37,7 @@ export default function RegistrationForm(props) {
                 <label htmlFor="option2" className="form-check-label">
                   Person
                 </label>
-              </div>
+              </div> */}
             </fieldset>
             {/* Username / Company Name*/}
             <div className="row mb-4">

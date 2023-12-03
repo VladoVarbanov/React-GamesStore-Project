@@ -8,17 +8,17 @@ import LoginPage from "./components/pages/LoginPage.jsx";
 import SellPage from "./components/pages/SellPage.jsx";
 import { GamesContext } from "./contexts/GamesContext.jsx";
 import { useState } from "react";
-import { allGames, gameDetails } from "./services/firebaseGamesDB.jsx";
+import { allGames, currentUser } from "./services/firebaseGamesDB.jsx";
 import EditPage from "./components/pages/EditPage.jsx";
 
 function App() {
+  const user = currentUser();
   const [id, setId] = useState("");
   let gameId = "";
   const setGameId = (id) => {
     setId(id);
     gameId = id;
   };
-
   const games = allGames();
   const gamesData = {
     games,
@@ -56,7 +56,10 @@ function App() {
             </GamesContext.Provider>
           }
         />
-        <Route path="/game-details/:gameId" element={<ProductDetails />} />
+        <Route
+          path="/game-details/:gameId"
+          element={<ProductDetails value={user} />}
+        />
         <Route path="/registration" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sell" element={<SellPage />} />

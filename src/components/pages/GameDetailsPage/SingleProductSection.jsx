@@ -1,28 +1,39 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../../contexts/GamesContext.jsx";
 import { currentUser } from "../../../services/firebaseGamesDB.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import "../../../../public/css/rating.css";
+import { getRating, sendRating } from "../../../services/rating.jsx";
 
 export default function SingleProductSection() {
   const { gameId, game } = useContext(GameContext);
-  const [ratingStars, setRatingStars] = useState(undefined);
+  const [ratingStars, setRatingStars] = useState(null);
   const [hover, setHover] = useState(null);
-  const user = currentUser();
-  const navigate = useNavigate();
-  let rating = 1.0;
+  const [rating, setRating] = useState([]);
 
-  if (game.rating !== undefined) {
-    rating = (
-      game.rating.reduce((a, c) => a + c, 0) / game.rating.length
-    ).toFixed(2);
-  } else {
-    rating = 1.0;
+  const user = currentUser();
+  getRating(gameId).then((r) => {
+    if (r.length) {
+      setRating(r.reduce((a, c) => a + c, 0) / r.length);
+    }
+  });
+  const navigate = useNavigate();
+
+  if (rating.length == 0) {
+    setRating("Unrated");
   }
 
   const onEdit = () => {
     navigate(`/edit/${gameId}`);
+  };
+
+  const setStars = async (ratingValue) => {
+    console.log("ratingValue", ratingValue);
+    const id = gameId;
+    await setRatingStars(ratingValue);
+
+    sendRating(id, ratingValue, user.uid);
   };
 
   return (
@@ -64,10 +75,9 @@ export default function SingleProductSection() {
                 <span>Genre:</span> <a href="#">{game?.genre}</a>
               </li>
               {/* Star rating */}
-              <div>
+              <li>
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
-
                   return (
                     <label key={i} htmlFor="" className="labelStar">
                       <input type="radio" name="rating" value={ratingValue} />
@@ -79,14 +89,16 @@ export default function SingleProductSection() {
                             : "#e4e5e9"
                         }
                         size={30}
-                        onClick={() => setRatingStars(ratingValue)}
+                        onClick={() => {
+                          setStars(ratingValue);
+                        }}
                         onMouseEnter={() => setHover(ratingValue)}
                         onMouseLeave={() => setHover(null)}
                       />
                     </label>
                   );
                 })}
-              </div>
+              </li>
               {/* <li>
                 <span>Multi-tags:</span> <a href="#">War</a>,
                 <a href="#">Battle</a>, <a href="#">Royal</a>

@@ -3,7 +3,7 @@ import Footer from "../Footer.jsx";
 import LoginForm from "./LoginPage/LoginForm.jsx";
 import { useState } from "react";
 import { SubmitContext } from "../../contexts/SubmitContext.jsx";
-import { singIn } from "../../services/firebaseGamesDB.jsx";
+import { currentUser, singIn } from "../../services/firebaseGamesDB.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(params) {
@@ -15,7 +15,6 @@ export default function LoginPage(params) {
     email: "",
     password: "",
   });
-
   const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
@@ -32,7 +31,9 @@ export default function LoginPage(params) {
     }
 
     singIn(values);
-    navigate("/");
+    if (err) {
+      navigate("/");
+    }
   };
   const SubmitValue = {
     err,

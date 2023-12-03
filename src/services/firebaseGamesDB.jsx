@@ -25,7 +25,6 @@ const auth = getAuth(initializeFirebase);
 export const user = auth.currentUser;
 
 // collection ref
-// const colRef = collection(db, "companies");
 const colRef = collection(db, "games");
 
 // Take all games from DB.
@@ -44,7 +43,6 @@ export const allGames = () => {
 
     fetchData();
   }, []);
-
   return games;
 };
 
@@ -102,9 +100,12 @@ export const singUp = async ({ username, email, password }) => {
 export const singIn = ({ email, password }) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
+      console.log("1", cred.user.email);
       return cred.user.email;
     })
-    .catch((err) => console.log(err.message));
+    .catch((err) => {
+      return err.message;
+    });
 };
 
 export const logOut = () => {
