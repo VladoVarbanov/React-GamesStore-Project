@@ -52,7 +52,7 @@ export default function RegisterPage(props) {
     }
 
     singUp(values);
-    if (!err) {
+    if (err) {
       navigate("/");
     }
   };
