@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(params) {
   const [errorPassword, setErrorPassword] = useState(false);
-  const [errorFirebasePassword, setErrorFirebasePassword] = useState(false);
+  const [errorFirebase, setErrorFirebase] = useState(false);
   const firebaseError = (err) => {
-    setErrorFirebasePassword(() => ({ ...err, errorFirebasePassword: err }));
+    setErrorFirebase(() => ({ ...err, errorFirebase: err }));
   };
 
   const [values, setValues] = useState({
@@ -20,10 +20,10 @@ export default function LoginPage(params) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (errorPassword && errorFirebasePassword) {
+    if (errorPassword && errorFirebase) {
       navigate("/");
     }
-  }, [errorFirebasePassword]);
+  }, [errorFirebase]);
 
   const onChangeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
