@@ -1,5 +1,7 @@
 import { initializeFirebase } from "./firebaseConfigDB.js";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   getAuth,
   signOut,
@@ -27,6 +29,8 @@ export const user = auth.currentUser;
 
 // collection ref
 const colRef = collection(db, "games");
+
+// const navigate = useNavigate();
 
 // Take all games from DB.
 export const allGames = () => {
@@ -111,15 +115,16 @@ export const singUp = async ({ username, email, password }) => {
 };
 
 // Login
-export const singIn = ({ email, password }) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((cred) => {
-      console.log("1", cred.user.email);
+export const singIn = ({ email, password }, firebaseError) => {
+  try {
+    signInWithEmailAndPassword(auth, email, password).then((cred) => {
+      firebaseError(true);
       return cred.user.email;
-    })
-    .catch((err) => {
-      return err.message;
     });
+  } catch (error) {
+    firebaseError(false);
+    return console.error("Error logging in:", error);
+  }
 };
 
 export const logOut = () => {

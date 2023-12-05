@@ -3,7 +3,8 @@ import { SubmitContext } from "../../../contexts/SubmitContext.jsx";
 import { Link } from "react-router-dom";
 
 export default function LoginForm(params) {
-  const { err, values, onChangeHandler, onSubmit } = useContext(SubmitContext);
+  const { errorPassword, values, onChangeHandler, onSubmit } =
+    useContext(SubmitContext);
   return (
     <div className="d-flex justify-content-center align-items-center m-5 px-15 ">
       <div className="container col-sm-2">
@@ -32,7 +33,7 @@ export default function LoginForm(params) {
                 <input
                   type="password"
                   className={`form-control ${
-                    err.passwordError ? "is-invalid" : ""
+                    errorPassword.errorPassword ? "is-invalid" : ""
                   }`}
                   id="password"
                   name="password"

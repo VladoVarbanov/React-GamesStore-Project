@@ -1,21 +1,29 @@
 import NavBar from "../NavBar.jsx";
 import Footer from "../Footer.jsx";
 import LoginForm from "./LoginPage/LoginForm.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitContext } from "../../contexts/SubmitContext.jsx";
-import { currentUser, singIn } from "../../services/firebaseGamesDB.jsx";
+import { singIn } from "../../services/firebaseGamesDB.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(params) {
-  const [err, setErr] = useState({
-    passwordError: false,
-  });
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [errorFirebasePassword, setErrorFirebasePassword] = useState(false);
+  const firebaseError = (err) => {
+    setErrorFirebasePassword(() => ({ ...err, errorFirebasePassword: err }));
+  };
 
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (errorPassword && errorFirebasePassword) {
+      navigate("/");
+    }
+  }, [errorFirebasePassword]);
 
   const onChangeHandler = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -25,23 +33,20 @@ export default function LoginPage(params) {
     e.preventDefault();
 
     if (values.password.length < 8) {
-      setErr((err) => ({ ...err, passwordError: true }));
+      setErrorPassword((err) => ({ ...err, errorPassword: true }));
     } else {
-      setErr((err) => ({ ...err, passwordError: false }));
+      setErrorPassword((err) => ({ ...err, errorPassword: false }));
     }
 
-    singIn(values);
-    if (err) {
-      navigate("/");
-    }
+    singIn(values, firebaseError);
   };
   const SubmitValue = {
-    err,
+    errorPassword,
     values,
     onChangeHandler,
     onSubmit,
   };
-  let activePage = "register";
+  let activePage = "login";
   return (
     <>
       <NavBar />
