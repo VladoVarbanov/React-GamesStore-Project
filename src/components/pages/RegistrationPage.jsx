@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitContext } from "../../contexts/SubmitContext.jsx";
 import NavBar from "../NavBar.jsx";
 import RegistrationForm from "./RegistrationPage/RegistrationForm.jsx";
@@ -10,16 +10,33 @@ export default function RegisterPage(props) {
   const [options, setOptions] = useState("option1");
   const [err, setErr] = useState({
     usernameError: false,
-    emailError: "",
-    passwordError: false,
-    confirmPasswordError: false,
+    emailError: true,
+    passwordError: true,
+    confirmPasswordError: true,
   });
+  const [errorFirebase, setErrorFirebase] = useState(true);
+  const firebaseError = (err) => {
+    setErrorFirebase(() => ({ ...err, errorFirebase: err }));
+  };
+
   const [values, setValues] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+
+  useEffect(() => {
+    if (
+      err.usernameError &&
+      err.emailError &&
+      err.passwordError &&
+      err.confirmPasswordError &&
+      !errorFirebase.errorFirebase
+    ) {
+      navigate("/");
+    }
+  }, [errorFirebase]);
 
   const navigate = useNavigate();
 
@@ -34,27 +51,24 @@ export default function RegisterPage(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (values.username.length < 3) {
-      setErr((err) => ({ ...err, usernameError: true }));
-    } else {
       setErr((err) => ({ ...err, usernameError: false }));
+    } else {
+      setErr((err) => ({ ...err, usernameError: true }));
     }
 
     if (values.password.length < 8) {
-      setErr((err) => ({ ...err, passwordError: true }));
-    } else {
       setErr((err) => ({ ...err, passwordError: false }));
+    } else {
+      setErr((err) => ({ ...err, passwordError: true }));
     }
 
     if (values.confirmPassword !== values.password) {
-      setErr((err) => ({ ...err, confirmPasswordError: true }));
-    } else {
       setErr((err) => ({ ...err, confirmPasswordError: false }));
+    } else {
+      setErr((err) => ({ ...err, confirmPasswordError: true }));
     }
 
-    singUp(values);
-    if (!err) {
-      navigate("/");
-    }
+    singUp(values, firebaseError);
   };
   const SubmitValue = {
     options,

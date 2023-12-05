@@ -109,9 +109,15 @@ export const editGame = async (
 };
 
 // Registration
-export const singUp = async ({ username, email, password }) => {
-  await createUserWithEmailAndPassword(auth, email, password);
-  await updateProfile(auth.currentUser, { displayName: username });
+export const singUp = async ({ username, email, password }, firebaseError) => {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, { displayName: username });
+    firebaseError(false);
+  } catch (error) {
+    firebaseError(true);
+    return console.error("Error logging in:", error);
+  }
 };
 
 // Login

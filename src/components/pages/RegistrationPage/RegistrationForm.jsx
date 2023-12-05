@@ -48,7 +48,7 @@ export default function RegistrationForm(props) {
                 <input
                   type="text"
                   className={`form-control ${
-                    err.usernameError ? "is-invalid" : ""
+                    err.usernameError ? "" : "is-invalid"
                   }`}
                   id="companyName"
                   name="username"
@@ -88,7 +88,7 @@ export default function RegistrationForm(props) {
                 <input
                   type="password"
                   className={`form-control ${
-                    err.passwordError ? "is-invalid" : ""
+                    err.passwordError ? "" : "is-invalid"
                   }`}
                   id="password"
                   name="password"
@@ -114,7 +114,7 @@ export default function RegistrationForm(props) {
                 <input
                   type="password"
                   className={`form-control ${
-                    err.confirmPasswordError ? "is-invalid" : ""
+                    err.confirmPasswordError ? "" : "is-invalid"
                   }`}
                   id="confirmPassword"
                   name="confirmPassword"
