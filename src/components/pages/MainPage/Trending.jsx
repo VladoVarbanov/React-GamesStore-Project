@@ -39,9 +39,14 @@ export default function Trending(props) {
                 <div className="down-content">
                   <span className="category">{game.genre}</span>
                   <h4>{game.game}</h4>
-                  <a href="game-details.html">
+                  <Link
+                    to={`/game-details/${game.id}`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
                     <i className="fa fa-shopping-bag"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

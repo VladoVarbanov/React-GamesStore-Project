@@ -53,7 +53,12 @@ export default function ShopStocks(props) {
                 <div className="down-content">
                   <span className="category">{game.genre}</span>
                   <h4>{game.game}</h4>
-                  <Link onClick={() => setGameId(game.id)}>
+                  <Link
+                    to={`/game-details/${game.id}`}
+                    onClick={async (e) => {
+                      setGameId(game.id);
+                    }}
+                  >
                     <i className="fa fa-shopping-bag"></i>
                   </Link>
                 </div>
